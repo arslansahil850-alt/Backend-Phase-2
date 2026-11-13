@@ -87,6 +87,24 @@ a {
 a:hover {
     color: var(--accent-gold);
 }
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand-logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.brand-logo span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
 
 /* --- STICKY NAVBAR --- */
 .navbar-header {
