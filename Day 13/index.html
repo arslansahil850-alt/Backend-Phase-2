@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13: REST API Design | Arslan's Premium Platform</title>
+     <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+          <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Lessons</a>
+                <a href="#exercises" class="nav-link"><i class="fa-solid fa-dumbbell"></i> Exercises</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-code-fork"></i> Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Quiz</a>
+                <a href="#revision" class="nav-link"><i class="fa-solid fa-rotate-left"></i> Revision</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 13 | REST API Design</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item">
+                                <a href="../Day 1/index.html">
+                                    <span class="day-num">Day 01</span>
+                                    <span class="day-topic">Backend Intro & Node.js</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 2/index.html">
+                                    <span class="day-num">Day 02</span>
+                                    <span class="day-topic">Node.js Modules (CommonJS)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 3/index.html">
+                                    <span class="day-num">Day 03</span>
+                                    <span class="day-topic">npm & Project Structure</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 4/index.html">
+                                    <span class="day-num">Day 04</span>
+                                    <span class="day-topic">Built-in Modules (fs, path, os)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 5/index.html">
+                                    <span class="day-num">Day 05</span>
+                                    <span class="day-topic">HTTP Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 6/index.html">
+                                    <span class="day-num">Day 06</span>
+                                    <span class="day-topic">Building a Node HTTP Server</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 7/index.html">
+                                    <span class="day-num">Day 07</span>
+                                    <span class="day-topic">Express.js Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 8/index.html">
+                                    <span class="day-num">Day 08</span>
+                                    <span class="day-topic">Route & Query Parameters</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 9/index.html">
+                                    <span class="day-num">Day 09</span>
+                                    <span class="day-topic">POST Requests & Request Body</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 10/index.html">
+                                    <span class="day-num">Day 10</span>
+                                    <span class="day-topic">PUT, PATCH & DELETE Requests</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 11/index.html">
+                                    <span class="day-num">Day 11</span>
+                                    <span class="day-topic">Express Middleware</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 12/index.html">
+                                    <span class="day-num">Day 12</span>
+                                    <span class="day-topic">Express Error Handling</span>
+                                </a>
+                            </li>
+                            <li class="day-item active">
+                                <a href="../Day 13/index.html">
+                                    <span class="day-num">Day 13</span>
+                                    <span class="day-topic">REST API Design Principles</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 14/index.html">
+                                    <span class="day-num">Day 14</span>
+                                    <span class="day-topic">Environment Variables & dotenv</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 15/index.html">
+                                    <span class="day-num">Day 15</span>
+                                    <span class="day-topic">Revision & Mini Project</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> PHASE 2 &bull; DAY 13</div>
+                <h1 class="hero-title">REST API <span class="text-gradient">Design</span></h1>
+                <p class="hero-description">
+                    Master industry-standard REST architectural constraints, clean resource naming conventions, semantic HTTP status codes, pagination, filtering, and API versioning.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 12/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Previous</a>
+                    <div class="current-indicator">Day 13 / 15</div>
+                    <a href="../Day 14/index.html" class="btn btn-primary">Next Day <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Day 13 Progress</span>
+                        <span id="overallProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D REST API Architecture Pipeline Visualizer (Drag to rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+        
+        <!-- SECTION A & B: INTRODUCTION & PREREQUISITES -->
+        <section class="content-block" id="introduction">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Introduction & Prerequisites</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why REST API Design?</h3>
+                    <p>
+                        REST (Representational State Transfer) is an architectural style for designing networked applications. A well-designed REST API is predictable, scalable, secure, and easy for frontend developers and third-party clients to consume.
+                    </p>
+                    <p>
+                        Today we master professional conventions: plural nouns for endpoints, proper status codes, filtering, sorting, pagination, and versioning.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Days 07–10:</strong> Express routing, query parameters, GET, POST, PUT, PATCH, and DELETE methods.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 12:</strong> Centralized error handling and status codes.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: LEARNING OBJECTIVES -->
+        <section class="content-block" id="objectives">
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="obj-number">01</div>
+                    <h4>Resource Naming</h4>
+                    <p>Use plural nouns (`/api/users`) and hierarchical sub-resources (`/api/users/:id/posts`).</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">02</div>
+                    <h4>Semantic Status Codes</h4>
+                    <p>Master 200, 201, 204, 400, 401, 403, 404, and 500 status meanings.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">03</div>
+                    <h4>Filtering & Pagination</h4>
+                    <p>Implement query parameters for pagination (`page`, `limit`) and sorting.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">04</div>
+                    <h4>API Versioning</h4>
+                    <p>Structure endpoints with version prefixes like `/api/v1/users`.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D & E: DETAILED LESSONS & CODE EXAMPLES -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Detailed Lessons & Code Demonstrations</h2>
+
+            <!-- Lesson 1 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 13.1</span>
+                    <h3>RESTful Naming Conventions & URL Hierarchy</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        Good REST APIs treat everything as a <strong>resource</strong> represented by nouns, never verbs. Actions are defined by HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> naming-conventions.txt</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-http"># BAD (Using verbs and inconsistent naming)
+GET    /getUsers
+POST   /createUser
+GET    /getUserPosts?id=5
+
+# GOOD (Clean RESTful plural nouns & nested resources)
+GET    /api/v1/users           # Retrieve all users
+POST   /api/v1/users           # Create a new user
+GET    /api/v1/users/42        # Retrieve user with ID 42
+PUT    /api/v1/users/42        # Replace user 42
+DELETE /api/v1/users/42        # Delete user 42
+GET    /api/v1/users/42/posts  # Retrieve posts belonging to user 42</code></pre>
+                        <div class="code-explanation">
+                            <h5><i class="fa-solid fa-circle-info"></i> Key Takeaway:</h5>
+                            <p class="text-secondary">Always use plural nouns for collections (`/users`, `/products`, `/orders`) and include versioning (`/api/v1/`).</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 2 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 13.2</span>
+                    <h3>Pagination, Filtering, and Sorting in Express</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        When collections grow large, returning thousands of records overwhelms servers and networks. We use query parameters to paginate (`page`, `limit`), filter (`status=active`), and sort (`sort=-createdAt`).
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> pagination.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Express Pagination & Filtering Controller Example
+app.get('/api/v1/products', (req, res) => {
+    let results = [...allProducts];
+
+    // 1. Filtering by category
+    if (req.query.category) {
+        results = results.filter(p => p.category === req.query.category);
+    }
+
+    // 2. Pagination (page & limit)
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const paginatedResults = results.slice(startIndex, endIndex);
+
+    res.json({
+        success: true,
+        page,
+        limit,
+        total: results.length,
+        count: paginatedResults.length,
+        data: paginatedResults
+    });
+});</code></pre>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION F: PRACTICAL EXERCISES -->
+        <section class="content-block" id="exercises">
+            <h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Practical Exercises</h2>
+            <div class="exercise-list">
+                
+                <!-- Exercise 1 -->
+                <div class="exercise-card" id="ex-1">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-easy">Easy</span>
+                        <h4>Exercise 1: Correcting Endpoint Naming</h4>
+                    </div>
+                    <p>Convert the non-RESTful endpoint `GET /getSingleUserById?id=12` into a proper RESTful endpoint.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-1')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-1">
+                        <pre><code class="language-http">GET /api/v1/users/12</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="exercise-card" id="ex-2">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 2: Status Code Selection</h4>
+                    </div>
+                    <p>What HTTP status code should be returned upon the successful creation of a new resource via POST?</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-2')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-2">
+                        <pre><code class="language-text">201 Created</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="exercise-card" id="ex-3">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 3: Nested Resource Route</h4>
+                    </div>
+                    <p>Write an Express route to retrieve all reviews for a specific product ID.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-3')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-3">
+                        <pre><code class="language-javascript">app.get('/api/v1/products/:productId/reviews', (req, res) => {
+    const { productId } = req.params;
+    // Fetch reviews for productId
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="exercise-card" id="ex-4">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 4: Query Pagination Calculation</h4>
+                    </div>
+                    <p>Calculate `startIndex` and `endIndex` given `page = 3` and `limit = 15`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-4')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-4">
+                        <pre><code class="language-javascript">const page = 3;
+const limit = 15;
+const startIndex = (page - 1) * limit; // 30
+const endIndex = page * limit; // 45</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="exercise-card" id="ex-5">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 5: No Content Status Code</h4>
+                    </div>
+                    <p>What status code is traditionally returned for a successful DELETE request where no response body is returned?</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-5')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-5">
+                        <pre><code class="language-text">204 No Content (or 200 OK with confirmation message)</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION G: DAILY PRACTICAL PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Daily Project: Professional RESTful API with Pagination & Filtering</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-server"></i> Build a Versioned REST API with Query Filtering</h3>
+                    <span class="phase-tag">Project Phase 2 - Day 13</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Description:</strong> Build a fully compliant REST API featuring versioned routes (`/api/v1/books`), pagination, category filtering, proper status codes, and centralized error handling.</p>
+                    
+                    <h4>Key Requirements:</h4>
+                    <ul class="styled-list">
+                        <li>Use RESTful plural noun endpoints with `/api/v1/` prefix.</li>
+                        <li>Implement query parameter pagination (`page`, `limit`) and filtering (`genre`).</li>
+                        <li>Return semantic status codes (200, 201, 204, 400, 404).</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> server.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Professional RESTful API Server (Day 13 Project)
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+// Mock Database
+let books = [
+    { id: 1, title: 'Clean Code', author: 'Robert C. Martin', genre: 'Programming', price: 29.99 },
+    { id: 2, title: 'The Pragmatic Programmer', author: 'Andrew Hunt', genre: 'Programming', price: 34.99 },
+    { id: 3, title: 'Atomic Habits', author: 'James Clear', genre: 'Self-Help', price: 21.99 },
+    { id: 4, title: 'Deep Work', author: 'Cal Newport', genre: 'Productivity', price: 24.99 },
+    { id: 5, title: 'Designing Data-Intensive Applications', author: 'Martin Kleppmann', genre: 'Architecture', price: 45.99 }
+];
+
+// 1. GET ALL BOOKS (With Filtering & Pagination)
+app.get('/api/v1/books', (req, res) => {
+    let results = [...books];
+
+    // Filter by genre query param
+    if (req.query.genre) {
+        results = results.filter(b => b.genre.toLowerCase() === req.query.genre.toLowerCase());
+    }
+
+    // Pagination
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 3;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const paginatedBooks = results.slice(startIndex, endIndex);
+
+    res.status(200).json({
+        success: true,
+        page,
+        limit,
+        totalResults: results.length,
+        totalPages: Math.ceil(results.length / limit),
+        data: paginatedBooks
+    });
+});
+
+// 2. GET SINGLE BOOK BY ID
+app.get('/api/v1/books/:id', (req, res, next) => {
+    const book = books.find(b => b.id === parseInt(req.params.id));
+    if (!book) {
+        const err = new Error('Book not found with that ID');
+        err.statusCode = 404;
+        return next(err);
+    }
+    res.status(200).json({ success: true, data: book });
+});
+
+// 3. CREATE NEW BOOK
+app.post('/api/v1/books', (req, res, next) => {
+    const { title, author, genre, price } = req.body;
+    if (!title || !author || !price) {
+        const err = new Error('Please provide title, author, and price');
+        err.statusCode = 400;
+        return next(err);
+    }
+
+    const newBook = { id: books.length + 1, title, author, genre: genre || 'General', price };
+    books.push(newBook);
+
+    res.status(201).json({ success: true, message: 'Book created successfully', data: newBook });
+});
+
+// 4. DELETE BOOK
+app.delete('/api/v1/books/:id', (req, res, next) => {
+    const index = books.findIndex(b => b.id === parseInt(req.params.id));
+    if (index === -1) {
+        const err = new Error('Book not found for deletion');
+        err.statusCode = 404;
+        return next(err);
+    }
+
+    books.splice(index, 1);
+    res.status(200).json({ success: true, message: 'Book deleted successfully' });
+});
+
+// Centralized Error Handler
+app.use((err, req, res, next) => {
+    res.status(err.statusCode || 500).json({
+        success: false,
+        error: err.message || 'Internal Server Error'
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`🚀 REST API server running at http://localhost:${PORT}`);
+});</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Project Completion Checklist</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created RESTful plural endpoint `/api/v1/books`
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Implemented query parameter pagination and genre filtering
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested status codes (200, 201, 400, 404) successfully
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: INTERACTIVE MCQ QUIZ -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Interactive Knowledge Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: KNOWLEDGE CHECK (TRUE/FALSE & SHORT ANSWERS) -->
+        <section class="content-block" id="knowledge-check">
+            <h2 class="section-title"><i class="fa-solid fa-clipboard-check"></i> Conceptual Knowledge Checks</h2>
+            
+            <div class="grid-2-col">
+                <!-- True/False -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-toggle-on"></i> True or False</h3>
+                    <div class="kc-item">
+                        <p>1. RESTful endpoint URIs should ideally use verbs rather than plural nouns (e.g., `/getUsers`).</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-1"><strong>FALSE:</strong> REST URIs should use plural nouns (`/users`), while HTTP methods specify the action.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. Status code 201 Created is the standard response for successfully creating a new resource.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-2"><strong>TRUE:</strong> 201 indicates a resource was successfully created.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. Versioning an API (e.g., `/api/v1/`) helps prevent breaking changes for existing clients.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-3"><strong>TRUE:</strong> Versioning ensures backward compatibility when updating APIs.</div>
+                    </div>
+                </div>
+
+                <!-- Short Answer -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-comment-dots"></i> Quick Concepts</h3>
+                    <div class="kc-item">
+                        <p>1. What status code represents successful resource creation?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-1"><strong>Answer:</strong> <code>201 Created</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. What naming convention is standard for REST resource collections?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-2"><strong>Answer:</strong> Plural nouns (e.g., <code>/users</code>, <code>/products</code>)</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. What query parameters are typically used for pagination?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-3"><strong>Answer:</strong> <code>page</code> and <code>limit</code> (or <code>offset</code> and <code>limit</code>)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: REVISION NOTES -->
+        <section class="content-block" id="revision">
+            <h2 class="section-title"><i class="fa-solid fa-rotate-left"></i> Day 13 Quick Revision Cheat-Sheet</h2>
+            <div class="revision-grid">
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                    <h4>Plural Nouns</h4>
+                    <p>Use resource collections with plural nouns (`/users`, `/posts`) instead of verbs.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-check-double"></i></div>
+                    <h4>Semantic Codes</h4>
+                    <p>Use 200 (OK), 201 (Created), 400 (Bad Request), 404 (Not Found), 500 (Server Error).</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-list-ol"></i></div>
+                    <h4>Pagination</h4>
+                    <p>Control large datasets using query parameters like `?page=1&limit=10`.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <h4>Versioning</h4>
+                    <p>Prefix API routes with version identifiers such as `/api/v1/`.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (Day 13/15)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+</html>

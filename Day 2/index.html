@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 02: Node.js Modules (CommonJS) | Arslan's Premium Platform</title>
+    <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+            <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Lessons</a>
+                <a href="#exercises" class="nav-link"><i class="fa-solid fa-dumbbell"></i> Exercises</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-code-fork"></i> Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Quiz</a>
+                <a href="#revision" class="nav-link"><i class="fa-solid fa-rotate-left"></i> Revision</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 02 | CommonJS Modules</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item">
+                                <a href="../Day 1/index.html">
+                                    <span class="day-num">Day 01</span>
+                                    <span class="day-topic">Backend Intro & Node.js</span>
+                                </a>
+                            </li>
+                            <li class="day-item active">
+                                <a href="../Day 2/index.html">
+                                    <span class="day-num">Day 02</span>
+                                    <span class="day-topic">Node.js Modules (CommonJS)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 3/index.html">
+                                    <span class="day-num">Day 03</span>
+                                    <span class="day-topic">npm & Project Structure</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 4/index.html">
+                                    <span class="day-num">Day 04</span>
+                                    <span class="day-topic">Built-in Modules (fs, path, os)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 5/index.html">
+                                    <span class="day-num">Day 05</span>
+                                    <span class="day-topic">HTTP Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 6/index.html">
+                                    <span class="day-num">Day 06</span>
+                                    <span class="day-topic">Building a Node HTTP Server</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 7/index.html">
+                                    <span class="day-num">Day 07</span>
+                                    <span class="day-topic">Express.js Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 8/index.html">
+                                    <span class="day-num">Day 08</span>
+                                    <span class="day-topic">Route & Query Parameters</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 9/index.html">
+                                    <span class="day-num">Day 09</span>
+                                    <span class="day-topic">POST Requests & Request Body</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 10/index.html">
+                                    <span class="day-num">Day 10</span>
+                                    <span class="day-topic">PUT, PATCH & DELETE Requests</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 11/index.html">
+                                    <span class="day-num">Day 11</span>
+                                    <span class="day-topic">Express Middleware</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 12/index.html">
+                                    <span class="day-num">Day 12</span>
+                                    <span class="day-topic">Express Error Handling</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 13/index.html">
+                                    <span class="day-num">Day 13</span>
+                                    <span class="day-topic">REST API Design</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 14/index.html">
+                                    <span class="day-num">Day 14</span>
+                                    <span class="day-topic">Environment Variables & dotenv</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 15/index.html">
+                                    <span class="day-num">Day 15</span>
+                                    <span class="day-topic">Revision & Mini Project</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> PHASE 2 &bull; DAY 02</div>
+                <h1 class="hero-title">Node.js Modules & <span class="text-gradient">CommonJS</span></h1>
+                <p class="hero-description">
+                    Master modular architecture in Node.js. Learn how `require()`, `module.exports`, and encapsulation
+                    keep large-scale backend applications organized, reusable, and maintainable.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 1/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i>
+                        Previous</a>
+                    <div class="current-indicator">Day 02 / 15</div>
+                    <a href="../Day 3/index.html" class="btn btn-primary">Next Day <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Day 02 Progress</span>
+                        <span id="overallProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D Modular Dependency Network Visualizer (Drag to
+                    rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+
+        <!-- SECTION A & B: INTRODUCTION & PREREQUISITES -->
+        <section class="content-block" id="introduction">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Introduction & Prerequisites</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why Modular Architecture?</h3>
+                    <p>
+                        As backend applications grow from a single script into complex systems with thousands of lines
+                        of code, writing everything in one file becomes unmaintainable.
+                    </p>
+                    <p>
+                        Node.js solves this through the <strong>Module System</strong>. A module is an encapsulated
+                        block of code that performs a specific task and exports its functionality so other files can
+                        import and reuse it safely.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 01 Knowledge:</strong> Familiarity
+                            with Node.js runtime, globals (`__dirname`), and terminal execution.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>JavaScript Functions & Objects:</strong>
+                            Understanding scope, object literals, and callback execution.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>File Navigation:</strong> Knowing
+                            relative file paths (`./` vs `../`).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: LEARNING OBJECTIVES -->
+        <section class="content-block" id="objectives">
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="obj-number">01</div>
+                    <h4>CommonJS Syntax</h4>
+                    <p>Master `require()` and `module.exports` for importing and exporting functionality.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">02</div>
+                    <h4>Module Encapsulation</h4>
+                    <p>Understand how module scope shields local variables from global namespace pollution.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">03</div>
+                    <h4>Built-in vs Custom Modules</h4>
+                    <p>Differentiate between core Node modules and custom developer-created file modules.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">04</div>
+                    <h4>Module Resolution</h4>
+                    <p>Comprehend how Node locates local files, relative paths, and folder indexes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D & E: DETAILED LESSONS & CODE EXAMPLES -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Detailed Lessons & Code Demonstrations</h2>
+
+            <!-- Lesson 1 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 2.1</span>
+                    <h3>The CommonJS Standard (`require` & `module.exports`)</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        Node.js defaults to the <strong>CommonJS</strong> module system. In CommonJS, every single
+                        JavaScript file is treated as a distinct, independent module. Variables, functions, and classes
+                        defined inside a file are private by default unless explicitly exported.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> math.js (Module Definition)</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// math.js - Custom Utility Module
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const PI = 3.14159;
+
+// Exporting functions and values via module.exports
+module.exports = {
+    add,
+    subtract,
+    PI
+};</code></pre>
+                    </div>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> app.js (Module Consumer)</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// app.js - Importing custom module using require()
+const math = require('./math');
+
+console.log("Addition result:", math.add(10, 5));     // 15
+console.log("Subtraction result:", math.subtract(10, 5)); // 5
+console.log("Value of PI:", math.PI);                 // 3.14159</code></pre>
+                        <div class="code-explanation">
+                            <h5><i class="fa-solid fa-circle-info"></i> Line-by-Line Breakdown:</h5>
+                            <ul>
+                                <li><code>require('./math')</code>: Tells Node to locate `math.js` relative to the
+                                    current file, execute it, and return its `module.exports` object.</li>
+                                <li><code>module.exports</code>: The special object that Node evaluates and returns when
+                                    another file requires this module.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 2 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 2.2</span>
+                    <h3>Module Wrapper Function</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        Before Node.js executes your code, it wraps every module inside a hidden wrapper function known
+                        as the <strong>Module Wrapper</strong>. This wrapper ensures that variables are scoped locally
+                        to the file rather than leaking to the global object.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> Hidden Wrapper Structure</span>
+                        </div>
+                        <pre><code class="language-javascript">(function(exports, require, module, __filename, __dirname) {
+    // Your module code lives entirely inside here!
+});</code></pre>
+                        <div class="code-explanation">
+                            <p>This explains why variables like <code>__dirname</code> and <code>module</code> are
+                                magically available in every file without needing to declare them!</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 3 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 2.3</span>
+                    <h3>Exporting Single Functions or Classes</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        Instead of exporting an object containing multiple functions, you can also export a single
+                        constructor function, class, or utility directly by assigning it to `module.exports`.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> logger.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// logger.js - Exporting a single function directly
+module.exports = function(message) {
+    const timestamp = new Date().toISOString();
+    console.log(`[LOG - ${timestamp}]: ${message}`);
+};</code></pre>
+                    </div>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> server.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// server.js
+const logger = require('./logger');
+
+logger("Server database connection initialized successfully.");</code></pre>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION F: PRACTICAL EXERCISES -->
+        <section class="content-block" id="exercises">
+            <h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Practical Exercises</h2>
+            <div class="exercise-list">
+
+                <!-- Exercise 1 -->
+                <div class="exercise-card" id="ex-1">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-easy">Easy</span>
+                        <h4>Exercise 1: String Utility Module</h4>
+                    </div>
+                    <p>Create a `stringUtils.js` module that exports two functions: `capitalize(str)` and
+                        `reverse(str)`. Import and test it in `app.js`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-1')"><i class="fa-solid fa-eye"></i> Reveal
+                        Solution</button>
+                    <div class="solution-box hidden" id="sol-1">
+                        <pre><code class="language-javascript">// stringUtils.js
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+const reverse = (str) => str.split('').reverse().join('');
+
+module.exports = { capitalize, reverse };</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="exercise-card" id="ex-2">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 2: Currency Converter Module</h4>
+                    </div>
+                    <p>Build a `currency.js` module that exports an exchange rate constant and a conversion function
+                        `USDToEUR(amount, rate)`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-2')"><i class="fa-solid fa-eye"></i> Reveal
+                        Solution</button>
+                    <div class="solution-box hidden" id="sol-2">
+                        <pre><code class="language-javascript">// currency.js
+const EUR_RATE = 0.92;
+
+function USDToEUR(usd) {
+    return (usd * EUR_RATE).toFixed(2);
+}
+
+module.exports = { EUR_RATE, USDToEUR };</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="exercise-card" id="ex-3">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 3: User Object Factory Module</h4>
+                    </div>
+                    <p>Create a module that exports a constructor function or factory function `createUser(name, role)`
+                        returning a user profile object.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-3')"><i class="fa-solid fa-eye"></i> Reveal
+                        Solution</button>
+                    <div class="solution-box hidden" id="sol-3">
+                        <pre><code class="language-javascript">// userFactory.js
+function createUser(name, role) {
+    return {
+        name,
+        role,
+        createdAt: new Date(),
+        getBio() {
+            return `${this.name} is a ${this.role}.`;
+        }
+    };
+}
+
+module.exports = createUser;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="exercise-card" id="ex-4">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 4: Multi-Module Folder Index</h4>
+                    </div>
+                    <p>Create a folder named `validator/` containing `email.js`, `password.js`, and an `index.js` that
+                        aggregates and exports both validators as a single object.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-4')"><i class="fa-solid fa-eye"></i> Reveal
+                        Solution</button>
+                    <div class="solution-box hidden" id="sol-4">
+                        <pre><code class="language-javascript">// validator/index.js
+const isValidEmail = (email) => email.includes('@');
+const isValidPassword = (pass) => pass.length >= 8;
+
+module.exports = {
+    isValidEmail,
+    isValidPassword
+};
+// Consumed via: const { isValidEmail } = require('./validator');</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="exercise-card" id="ex-5">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 5: Configuration Manager Module</h4>
+                    </div>
+                    <p>Build a config module that freezes an exported configuration object using `Object.freeze()` to
+                        prevent runtime modifications.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-5')"><i class="fa-solid fa-eye"></i> Reveal
+                        Solution</button>
+                    <div class="solution-box hidden" id="sol-5">
+                        <pre><code class="language-javascript">// config.js
+const config = Object.freeze({
+    PORT: 3000,
+    ENV: "development",
+    DB_HOST: "localhost"
+});
+
+module.exports = config;</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION G: DAILY PRACTICAL PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Daily Project: Modular Calculator & Statistics
+                CLI</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-folder-tree"></i> Build a Multi-File Modular Statistics Calculator</h3>
+                    <span class="phase-tag">Project Phase 2 - Day 02</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Description:</strong> Build a modular Node.js application divided into separate files
+                        (`math.js`, `stats.js`, and `app.js`). The application will calculate array statistics (sum,
+                        average, max, min) using imported CommonJS modules.</p>
+
+                    <h4>Key Requirements:</h4>
+                    <ul class="styled-list">
+                        <li>Create `math.js` for basic arithmetic functions.</li>
+                        <li>Create `stats.js` that requires `math.js` and computes array average and total sum.</li>
+                        <li>Create `app.js` as the main entry point to execute and log formatted results.</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> stats.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// stats.js - Array Statistics Module
+const math = require('./math');
+
+function calculateStats(numbers) {
+    if (!numbers || numbers.length === 0) return null;
+
+    let sum = 0;
+    for (let num of numbers) {
+        sum = math.add(sum, num);
+    }
+
+    const average = sum / numbers.length;
+    const max = Math.max(...numbers);
+    const min = Math.min(...numbers);
+
+    return {
+        count: numbers.length,
+        sum,
+        average,
+        max,
+        min
+    };
+}
+
+module.exports = { calculateStats };</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Project Completion Checklist</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created `math.js` with arithmetic exports
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created `stats.js` requiring `math.js`
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested execution successfully in `app.js`
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: INTERACTIVE MCQ QUIZ -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Interactive Knowledge Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i
+                            class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: KNOWLEDGE CHECK (TRUE/FALSE & SHORT ANSWERS) -->
+        <section class="content-block" id="knowledge-check">
+            <h2 class="section-title"><i class="fa-solid fa-clipboard-check"></i> Conceptual Knowledge Checks</h2>
+
+            <div class="grid-2-col">
+                <!-- True/False -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-toggle-on"></i> True or False</h3>
+                    <div class="kc-item">
+                        <p>1. In CommonJS, variables declared in one file are automatically global across all files.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-1"><strong>FALSE:</strong> Each file is encapsulated in its
+                            own module scope.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. The `require()` function is used to import modules in CommonJS.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-2"><strong>TRUE:</strong> `require()` loads and returns
+                            exported module data.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. Node wraps every module in a hidden function wrapper before execution.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-3"><strong>TRUE:</strong> The Module Wrapper provides
+                            `__dirname`, `module`, and `exports`.</div>
+                    </div>
+                </div>
+
+                <!-- Short Answer -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-comment-dots"></i> Quick Concepts</h3>
+                    <div class="kc-item">
+                        <p>1. What object is used to expose functions from a CommonJS module?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-1"><strong>Answer:</strong> <code>module.exports</code> (or
+                            shorthand `exports`).</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. What module system does Node.js use by default?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-2"><strong>Answer:</strong> <strong>CommonJS</strong>.
+                        </div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. What happens if you require a folder without specifying a filename?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-3"><strong>Answer:</strong> Node looks for an `index.js`
+                            file inside that folder by default.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: REVISION NOTES -->
+        <section class="content-block" id="revision">
+            <h2 class="section-title"><i class="fa-solid fa-rotate-left"></i> Day 02 Quick Revision Cheat-Sheet</h2>
+            <div class="revision-grid">
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-box-archive"></i></div>
+                    <h4>CommonJS</h4>
+                    <p>Default Node module standard using <code>require()</code> and <code>module.exports</code>.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Encapsulation</h4>
+                    <p>Variables inside a module are private by default and do not pollute global scope.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-file-import"></i></div>
+                    <h4>Importing</h4>
+                    <p>Use relative paths (<code>./</code> or <code>../</code>) for custom local file modules.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-folder-open"></i></div>
+                    <h4>Folder Index</h4>
+                    <p>Requiring a directory automatically resolves to <code>index.js</code> inside that folder.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span
+                            class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (Day 02/15)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

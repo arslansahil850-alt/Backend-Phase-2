@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 12: Express Error Handling | Arslan's Premium Platform</title>
+     <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+          <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Lessons</a>
+                <a href="#exercises" class="nav-link"><i class="fa-solid fa-dumbbell"></i> Exercises</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-code-fork"></i> Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Quiz</a>
+                <a href="#revision" class="nav-link"><i class="fa-solid fa-rotate-left"></i> Revision</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 12 | Express Error Handling</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item">
+                                <a href="../Day 1/index.html">
+                                    <span class="day-num">Day 01</span>
+                                    <span class="day-topic">Backend Intro & Node.js</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 2/index.html">
+                                    <span class="day-num">Day 02</span>
+                                    <span class="day-topic">Node.js Modules (CommonJS)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 3/index.html">
+                                    <span class="day-num">Day 03</span>
+                                    <span class="day-topic">npm & Project Structure</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 4/index.html">
+                                    <span class="day-num">Day 04</span>
+                                    <span class="day-topic">Built-in Modules (fs, path, os)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 5/index.html">
+                                    <span class="day-num">Day 05</span>
+                                    <span class="day-topic">HTTP Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 6/index.html">
+                                    <span class="day-num">Day 06</span>
+                                    <span class="day-topic">Building a Node HTTP Server</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 7/index.html">
+                                    <span class="day-num">Day 07</span>
+                                    <span class="day-topic">Express.js Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 8/index.html">
+                                    <span class="day-num">Day 08</span>
+                                    <span class="day-topic">Route & Query Parameters</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 9/index.html">
+                                    <span class="day-num">Day 09</span>
+                                    <span class="day-topic">POST Requests & Request Body</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 10/index.html">
+                                    <span class="day-num">Day 10</span>
+                                    <span class="day-topic">PUT, PATCH & DELETE Requests</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 11/index.html">
+                                    <span class="day-num">Day 11</span>
+                                    <span class="day-topic">Express Middleware</span>
+                                </a>
+                            </li>
+                            <li class="day-item active">
+                                <a href="../Day 12/index.html">
+                                    <span class="day-num">Day 12</span>
+                                    <span class="day-topic">Express Error Handling</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 13/index.html">
+                                    <span class="day-num">Day 13</span>
+                                    <span class="day-topic">REST API Design</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 14/index.html">
+                                    <span class="day-num">Day 14</span>
+                                    <span class="day-topic">Environment Variables & dotenv</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 15/index.html">
+                                    <span class="day-num">Day 15</span>
+                                    <span class="day-topic">Revision & Mini Project</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> PHASE 2 &bull; DAY 12</div>
+                <h1 class="hero-title">Express Error <span class="text-gradient">Handling</span></h1>
+                <p class="hero-description">
+                    Build robust backend applications that never crash unexpectedly. Master Express error-handling middleware signatures (`err, req, res, next`), asynchronous error forwarding, and custom error classes.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 11/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Previous</a>
+                    <div class="current-indicator">Day 12 / 15</div>
+                    <a href="../Day 13/index.html" class="btn btn-primary">Next Day <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Day 12 Progress</span>
+                        <span id="overallProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D Error Catching & Middleware Pipeline Visualizer (Drag to rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+        
+        <!-- SECTION A & B: INTRODUCTION & PREREQUISITES -->
+        <section class="content-block" id="introduction">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Introduction & Prerequisites</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why Error Handling?</h3>
+                    <p>
+                        In production backends, things fail: databases go offline, users send invalid JSON, or requested records are missing. Uncaught exceptions will crash your Node.js process.
+                    </p>
+                    <p>
+                        Express provides a specialized <strong>Error-Handling Middleware</strong> signature consisting of four parameters: <code>(err, req, res, next)</code>. Placing this at the bottom of your middleware stack intercepts all runtime errors gracefully.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 11 Knowledge:</strong> Deep understanding of middleware execution order and `next()`.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Async/Await:</strong> Familiarity with asynchronous JavaScript execution in Node.js.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: LEARNING OBJECTIVES -->
+        <section class="content-block" id="objectives">
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="obj-number">01</div>
+                    <h4>Error Middleware Signature</h4>
+                    <p>Master the 4-parameter `(err, req, res, next)` function signature.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">02</div>
+                    <h4>Forwarding Errors</h4>
+                    <p>Pass errors downstream using `next(err)` inside synchronous and asynchronous code.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">03</div>
+                    <h4>Centralized Error Handler</h4>
+                    <p>Build a unified error-handling middleware that returns clean JSON responses.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">04</div>
+                    <h4>Custom Error Classes</h4>
+                    <p>Create reusable custom AppError classes with status codes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D & E: DETAILED LESSONS & CODE EXAMPLES -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Detailed Lessons & Code Demonstrations</h2>
+
+            <!-- Lesson 1 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 12.1</span>
+                    <h3>The 4-Parameter Error Middleware Signature</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        When Express detects an error passed via <code>next(err)</code> or thrown inside a synchronous handler, it skips all regular middleware and jumps straight to the nearest error-handling middleware (which must have 4 parameters).
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> error-demo.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+// Trigger an error route
+app.get('/api/fail', (req, res, next) => {
+    const err = new Error('Something went catastrophically wrong!');
+    err.statusCode = 500;
+    next(err); // Forwards error to error-handling middleware
+});
+
+// CENTRALIZED ERROR-HANDLING MIDDLEWARE (Must have exactly 4 parameters)
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    
+    res.status(statusCode).json({
+        success: false,
+        error: {
+            message: err.message || 'Internal Server Error',
+            status: statusCode,
+            stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+        }
+    });
+});
+
+app.listen(3000);</code></pre>
+                        <div class="code-explanation">
+                            <h5><i class="fa-solid fa-circle-info"></i> Key Takeaway:</h5>
+                            <p class="text-secondary">Always define your error-handling middleware at the very bottom of your application after all routes and regular middleware.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 2 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 12.2</span>
+                    <h3>Handling Async Errors in Express</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        In Express 4 and earlier, errors thrown inside asynchronous functions (like database queries) are not automatically caught unless passed to `next(err)` or wrapped in try/catch blocks.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> async-error.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Async Route with Try/Catch Error Forwarding
+app.get('/api/users/:id', async (req, res, next) => {
+    try {
+        const user = await fakeDatabaseFind(req.params.id);
+        if (!user) {
+            const error = new Error('User not found');
+            error.statusCode = 404;
+            throw error;
+        }
+        res.json({ success: true, data: user });
+    } catch (err) {
+        next(err); // Safely forwards error to error middleware
+    }
+});</code></pre>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION F: PRACTICAL EXERCISES -->
+        <section class="content-block" id="exercises">
+            <h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Practical Exercises</h2>
+            <div class="exercise-list">
+                
+                <!-- Exercise 1 -->
+                <div class="exercise-card" id="ex-1">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-easy">Easy</span>
+                        <h4>Exercise 1: Error Middleware Signature</h4>
+                    </div>
+                    <p>Write the parameter signature for a centralized Express error-handling middleware function.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-1')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-1">
+                        <pre><code class="language-javascript">app.use((err, req, res, next) => {
+    // Error handling logic
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="exercise-card" id="ex-2">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 2: Forwarding an Error</h4>
+                    </div>
+                    <p>Inside a route handler, create a new `Error` with message `'Invalid ID'` and status `400`, then forward it downstream.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-2')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-2">
+                        <pre><code class="language-javascript">const err = new Error('Invalid ID');
+err.statusCode = 400;
+next(err);</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="exercise-card" id="ex-3">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 3: 404 Route Not Found Middleware</h4>
+                    </div>
+                    <p>Write a catch-all middleware placed before the error handler that intercepts unregistered routes and creates a 404 error.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-3')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-3">
+                        <pre><code class="language-javascript">app.use((req, res, next) => {
+    const error = new Error(`Not Found - ${req.originalUrl}`);
+    error.statusCode = 404;
+    next(error);
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="exercise-card" id="ex-4">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 4: Async Try/Catch Wrapper</h4>
+                    </div>
+                    <p>Write an async route handler that queries a database and wraps the execution in try/catch forwarding to `next(err)`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-4')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-4">
+                        <pre><code class="language-javascript">app.get('/api/data', async (req, res, next) => {
+    try {
+        const data = await fetchDatabaseData();
+        res.json({ data });
+    } catch (err) {
+        next(err);
+    }
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="exercise-card" id="ex-5">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 5: Custom AppError Class</h4>
+                    </div>
+                    <p>Create a custom `AppError` class extending `Error` that accepts `message` and `statusCode` parameters.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-5')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-5">
+                        <pre><code class="language-javascript">class AppError extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode;
+        this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+        this.isOperational = true;
+        Error.captureStackTrace(this, this.constructor);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION G: DAILY PRACTICAL PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Daily Project: Production-Ready Error-Handled Express API</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-shield-virus"></i> Build a Robust Backend with Centralized Error Handling</h3>
+                    <span class="phase-tag">Project Phase 2 - Day 12</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Description:</strong> Build an Express server featuring custom AppError classes, async try/catch handlers, 404 route interception, and a centralized 4-parameter error-handling middleware.</p>
+                    
+                    <h4>Key Requirements:</h4>
+                    <ul class="styled-list">
+                        <li>Implement a custom `AppError` class for operational errors.</li>
+                        <li>Create robust GET and POST routes with validation and error forwarding.</li>
+                        <li>Implement 404 catch-all middleware and centralized error middleware.</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> server.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Production-Ready Error-Handled Express API
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+// 1. Custom AppError Class
+class AppError extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode;
+        this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+        this.isOperational = true;
+    }
+}
+
+// In-Memory Database Simulation
+let products = [
+    { id: 1, name: 'Mechanical Keyboard', price: 89.99 },
+    { id: 2, name: 'Gaming Mouse', price: 49.99 }
+];
+
+// 2. Routes
+app.get('/api/products', (req, res) => {
+    res.json({ success: true, count: products.length, data: products });
+});
+
+app.get('/api/products/:id', (req, res, next) => {
+    const product = products.find(p => p.id === parseInt(req.params.id));
+    
+    if (!product) {
+        return next(new AppError('Product not found with that ID', 404));
+    }
+    
+    res.json({ success: true, data: product });
+});
+
+app.post('/api/products', (req, res, next) => {
+    const { name, price } = req.body;
+    
+    if (!name || !price) {
+        return next(new AppError('Please provide both product name and price', 400));
+    }
+
+    const newProduct = { id: products.length + 1, name, price };
+    products.push(newProduct);
+
+    res.status(201).json({ success: true, message: 'Product created', data: newProduct });
+});
+
+// 3. 404 Route Not Found Interceptor
+app.all('*', (req, res, next) => {
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+// 4. Centralized Error-Handling Middleware (4 Parameters)
+app.use((err, req, res, next) => {
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || 'error';
+
+    console.error(`❌ [ERROR]: ${err.message}`);
+
+    res.status(err.statusCode).json({
+        success: false,
+        status: err.status,
+        error: err.message,
+        stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`🚀 Error-handled API server active at http://localhost:${PORT}`);
+});</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Project Completion Checklist</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created `server.js` with custom `AppError` class
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Implemented 404 catch-all middleware for missing routes
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested centralized 4-parameter error handler successfully
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: INTERACTIVE MCQ QUIZ -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Interactive Knowledge Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: KNOWLEDGE CHECK (TRUE/FALSE & SHORT ANSWERS) -->
+        <section class="content-block" id="knowledge-check">
+            <h2 class="section-title"><i class="fa-solid fa-clipboard-check"></i> Conceptual Knowledge Checks</h2>
+            
+            <div class="grid-2-col">
+                <!-- True/False -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-toggle-on"></i> True or False</h3>
+                    <div class="kc-item">
+                        <p>1. Express error-handling middleware must take exactly four parameters: `(err, req, res, next)`.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-1"><strong>TRUE:</strong> Express identifies error middleware by its 4-parameter signature.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. Uncaught exceptions in Node.js will automatically crash the server process if left unhandled.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-2"><strong>TRUE:</strong> Uncaught errors terminate the Node process to prevent unpredictable state.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. Calling `next()` with an argument skips all subsequent normal middleware and jumps straight to error handlers.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-3"><strong>TRUE:</strong> Passing any argument to `next()` tells Express an error occurred.</div>
+                    </div>
+                </div>
+
+                <!-- Short Answer -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-comment-dots"></i> Quick Concepts</h3>
+                    <div class="kc-item">
+                        <p>1. What function is called to forward an error downstream in Express?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-1"><strong>Answer:</strong> <code>next(err)</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. Where should error-handling middleware be positioned in your middleware stack?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-2"><strong>Answer:</strong> At the very bottom after all routes and regular middleware.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. What status code is standard for a resource that cannot be found?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-3"><strong>Answer:</strong> <code>404 Not Found</code></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: REVISION NOTES -->
+        <section class="content-block" id="revision">
+            <h2 class="section-title"><i class="fa-solid fa-rotate-left"></i> Day 12 Quick Revision Cheat-Sheet</h2>
+            <div class="revision-grid">
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4>Error Signature</h4>
+                    <p>Centralized error handlers require the 4-parameter signature <code>(err, req, res, next)</code>.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-forward"></i></div>
+                    <h4>Forwarding Errors</h4>
+                    <p>Pass errors downstream using <code>next(err)</code> or catch async exceptions in try/catch blocks.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-ban"></i></div>
+                    <h4>404 Interceptor</h4>
+                    <p>Use a catch-all route at the bottom to intercept unregistered endpoints and create 404 errors.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <h4>Custom AppError</h4>
+                    <p>Extend the native `Error` class to create clean, reusable operational errors with status codes.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+               <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (Day 12/15)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+</html>

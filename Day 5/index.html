@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 05: HTTP Fundamentals | Arslan's Premium Platform</title>
+     <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+        <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Lessons</a>
+                <a href="#exercises" class="nav-link"><i class="fa-solid fa-dumbbell"></i> Exercises</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-code-fork"></i> Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Quiz</a>
+                <a href="#revision" class="nav-link"><i class="fa-solid fa-rotate-left"></i> Revision</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 05 | HTTP Fundamentals</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item">
+                                <a href="../Day 1/index.html">
+                                    <span class="day-num">Day 01</span>
+                                    <span class="day-topic">Backend Intro & Node.js</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 2/index.html">
+                                    <span class="day-num">Day 02</span>
+                                    <span class="day-topic">Node.js Modules (CommonJS)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 3/index.html">
+                                    <span class="day-num">Day 03</span>
+                                    <span class="day-topic">npm & Project Structure</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 4/index.html">
+                                    <span class="day-num">Day 04</span>
+                                    <span class="day-topic">Built-in Modules (fs, path, os)</span>
+                                </a>
+                            </li>
+                            <li class="day-item active">
+                                <a href="../Day 5/index.html">
+                                    <span class="day-num">Day 05</span>
+                                    <span class="day-topic">HTTP Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 6/index.html">
+                                    <span class="day-num">Day 06</span>
+                                    <span class="day-topic">Building a Node HTTP Server</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 7/index.html">
+                                    <span class="day-num">Day 07</span>
+                                    <span class="day-topic">Express.js Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 8/index.html">
+                                    <span class="day-num">Day 08</span>
+                                    <span class="day-topic">Route & Query Parameters</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 9/index.html">
+                                    <span class="day-num">Day 09</span>
+                                    <span class="day-topic">POST Requests & Request Body</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 10/index.html">
+                                    <span class="day-num">Day 10</span>
+                                    <span class="day-topic">PUT, PATCH & DELETE Requests</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 11/index.html">
+                                    <span class="day-num">Day 11</span>
+                                    <span class="day-topic">Express Middleware</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 12/index.html">
+                                    <span class="day-num">Day 12</span>
+                                    <span class="day-topic">Express Error Handling</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 13/index.html">
+                                    <span class="day-num">Day 13</span>
+                                    <span class="day-topic">REST API Design</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 14/index.html">
+                                    <span class="day-num">Day 14</span>
+                                    <span class="day-topic">Environment Variables & dotenv</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 15/index.html">
+                                    <span class="day-num">Day 15</span>
+                                    <span class="day-topic">Revision & Mini Project</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> PHASE 2 &bull; DAY 05</div>
+                <h1 class="hero-title">HTTP <span class="text-gradient">Fundamentals</span></h1>
+                <p class="hero-description">
+                    Decode the language of the web. Master the Hypertext Transfer Protocol (HTTP), request methods, status codes, headers, and the underlying Request-Response cycle that powers all client-server communication.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 4/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Previous</a>
+                    <div class="current-indicator">Day 05 / 15</div>
+                    <a href="../Day 6/index.html" class="btn btn-primary">Next Day <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Day 05 Progress</span>
+                        <span id="overallProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D HTTP Request-Response Packet Visualizer (Drag to rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+        
+        <!-- SECTION A & B: INTRODUCTION & PREREQUISITES -->
+        <section class="content-block" id="introduction">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Introduction & Prerequisites</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why HTTP?</h3>
+                    <p>
+                        Every time you browse a website, click a button, or fetch data in an application, your browser communicates with a remote server using <strong>HTTP (Hypertext Transfer Protocol)</strong>.
+                    </p>
+                    <p>
+                        As a backend developer, understanding HTTP is non-negotiable. You are building systems that receive HTTP requests, parse headers, evaluate methods, and return precise HTTP responses with correct status codes.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 04 Knowledge:</strong> Familiarity with Node runtime and asynchronous scripts.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Client-Server Awareness:</strong> Knowing that browsers request data and servers fulfill it.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Basic URL Structure:</strong> Understanding domains, paths, and query parameters.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: LEARNING OBJECTIVES -->
+        <section class="content-block" id="objectives">
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="obj-number">01</div>
+                    <h4>Request-Response Cycle</h4>
+                    <p>Comprehend how clients transmit requests and servers return structured responses.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">02</div>
+                    <h4>HTTP Methods (Verbs)</h4>
+                    <p>Master GET, POST, PUT, PATCH, and DELETE semantic actions.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">03</div>
+                    <h4>HTTP Status Codes</h4>
+                    <p>Categorize 2xx successes, 3xx redirects, 4xx client errors, and 5xx server errors.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">04</div>
+                    <h4>Headers & Payloads</h4>
+                    <p>Inspect metadata headers like Content-Type, Authorization, and User-Agent.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D & E: DETAILED LESSONS & CODE EXAMPLES -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Detailed Lessons & Code Demonstrations</h2>
+
+            <!-- Lesson 1 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 5.1</span>
+                    <h3>The HTTP Request-Response Cycle</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        HTTP is a stateless, client-server protocol. The client initiates a TCP connection, sends an HTTP request message, and the server processes it and returns an HTTP response message before closing or keeping the connection alive.
+                    </p>
+                    <div class="diagram-box">
+                        <div class="node-box">Client (Browser / Postman)</div>
+                        <div class="arrow-box">&rarr; Request (Method + URL + Headers) &rarr;<br>&larr; Response (Status + Headers + Body) &larr;</div>
+                        <div class="node-box highlight">Node.js Server</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 2 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 5.2</span>
+                    <h3>HTTP Status Codes Breakdown</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        Status codes inform the client about the outcome of their request. They are grouped into 5 distinct classes:
+                    </p>
+                    <ul class="styled-list mb-3">
+                        <li><i class="fa-solid fa-circle-check text-gold"></i> <strong>2xx (Success):</strong> Request was received and processed successfully (e.g., `200 OK`, `201 Created`).</li>
+                        <li><i class="fa-solid fa-arrow-right text-gold"></i> <strong>3xx (Redirection):</strong> Further action is needed to complete the request (e.g., `301 Moved Permanently`).</li>
+                        <li><i class="fa-solid fa-triangle-exclamation text-gold"></i> <strong>4xx (Client Error):</strong> The request contains bad syntax or unauthorized data (e.g., `400 Bad Request`, `401 Unauthorized`, `404 Not Found`).</li>
+                        <li><i class="fa-solid fa-server text-gold"></i> <strong>5xx (Server Error):</strong> The server failed to fulfill a valid request due to an internal bug (e.g., `500 Internal Server Error`).</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Lesson 3 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 5.3</span>
+                    <h3>Anatomy of HTTP Messages</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        An HTTP message consists of a start line, optional headers, an empty line separator, and an optional message body.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> Raw HTTP Request Example</span>
+                        </div>
+                        <pre><code class="language-http">GET /api/users HTTP/1.1
+Host: localhost:3000
+User-Agent: Mozilla/5.0
+Accept: application/json</code></pre>
+                    </div>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> Raw HTTP Response Example</span>
+                        </div>
+                        <pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 45
+
+{ "success": true, "data": ["Arslan", "Ali"] }</code></pre>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION F: PRACTICAL EXERCISES -->
+        <section class="content-block" id="exercises">
+            <h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Practical Exercises</h2>
+            <div class="exercise-list">
+                
+                <!-- Exercise 1 -->
+                <div class="exercise-card" id="ex-1">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-easy">Easy</span>
+                        <h4>Exercise 1: Status Code Matcher</h4>
+                    </div>
+                    <p>Identify which status code (200, 201, 400, 404, or 500) corresponds to: "A new user resource was successfully created."</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-1')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-1">
+                        <p class="text-secondary"><strong>201 Created</strong> — The standard HTTP status code for successful resource creation.</p>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="exercise-card" id="ex-2">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 2: Identifying Client vs Server Errors</h4>
+                    </div>
+                    <p>Explain the difference between a 4xx status code and a 5xx status code.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-2')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-2">
+                        <p class="text-secondary"><strong>4xx</strong> represents a client-side error (bad request, missing auth, invalid URL). <strong>5xx</strong> represents a server-side error (database crash, internal unhandled exception).</p>
+                    </div>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="exercise-card" id="ex-3">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 3: Semantic HTTP Methods</h4>
+                    </div>
+                    <p>Which HTTP method should be used to completely replace or update an existing user record?</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-3')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-3">
+                        <p class="text-secondary"><strong>PUT</strong> (or <strong>PATCH</strong> for partial updates).</p>
+                    </div>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="exercise-card" id="ex-4">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 4: Content-Type Header Purpose</h4>
+                    </div>
+                    <p>What is the purpose of the `Content-Type: application/json` header in an HTTP response?</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-4')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-4">
+                        <p class="text-secondary">It informs the client browser or consumer that the transmitted response body is formatted as structured JSON data so it can parse it correctly.</p>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="exercise-card" id="ex-5">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 5: Idempotency in HTTP Methods</h4>
+                    </div>
+                    <p>Which common HTTP methods are considered <strong>idempotent</strong> (making multiple identical requests produces the exact same server state as making a single request)?</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-5')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-5">
+                        <p class="text-secondary"><strong>GET, PUT, DELETE</strong> are idempotent. <strong>POST</strong> is not idempotent (making two POST requests creates two duplicate resources).</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION G: DAILY PRACTICAL PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Daily Project: HTTP Protocol Inspector CLI</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-network-wired"></i> Build an HTTP Request Simulator & Status Analyzer</h3>
+                    <span class="phase-tag">Project Phase 2 - Day 05</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Description:</strong> Build a Node.js CLI tool that simulates incoming HTTP requests with different methods and paths, evaluates status codes, and outputs structured response summaries.</p>
+                    
+                    <h4>Key Requirements:</h4>
+                    <ul class="styled-list">
+                        <li>Define mock request objects containing method, path, and headers.</li>
+                        <li>Write a response analyzer function that returns semantic status messages.</li>
+                        <li>Format terminal output cleanly.</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> http-inspector.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// HTTP Protocol Simulator & Inspector
+const requests = [
+    { method: 'GET', path: '/api/users', statusCode: 200 },
+    { method: 'POST', path: '/api/users', statusCode: 201 },
+    { method: 'GET', path: '/api/admin', statusCode: 401 },
+    { method: 'GET', path: '/missing-page', statusCode: 404 },
+    { method: 'PUT', path: '/api/crash', statusCode: 500 }
+];
+
+function analyzeResponse(req) {
+    let category = "Unknown";
+    if (req.statusCode >= 200 && req.statusCode < 300) category = "SUCCESS (2xx)";
+    else if (req.statusCode >= 300 && req.statusCode < 400) category = "REDIRECTION (3xx)";
+    else if (req.statusCode >= 400 && req.statusCode < 500) category = "CLIENT ERROR (4xx)";
+    else if (req.statusCode >= 500) category = "SERVER ERROR (5xx)";
+
+    return {
+        ...req,
+        category
+    };
+}
+
+console.log("==================================================");
+console.log("       ARSLAN HTTP PROTOCOL INSPECTOR CLI         ");
+console.log("==================================================");
+
+requests.forEach(req => {
+    const res = analyzeResponse(req);
+    console.log(`[${res.method}] ${res.path} &rarr; Status: ${res.statusCode} (${res.category})`);
+});
+console.log("==================================================");</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Project Completion Checklist</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created `http-inspector.js` script locally
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Executed script using `node http-inspector.js`
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Reviewed status code category analysis outputs
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: INTERACTIVE MCQ QUIZ -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Interactive Knowledge Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: KNOWLEDGE CHECK (TRUE/FALSE & SHORT ANSWERS) -->
+        <section class="content-block" id="knowledge-check">
+            <h2 class="section-title"><i class="fa-solid fa-clipboard-check"></i> Conceptual Knowledge Checks</h2>
+            
+            <div class="grid-2-col">
+                <!-- True/False -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-toggle-on"></i> True or False</h3>
+                    <div class="kc-item">
+                        <p>1. HTTP is a stateful protocol that remembers every user connection permanently.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-1"><strong>FALSE:</strong> HTTP is stateless by design. Each request is independent.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. Status code 404 means the requested resource was not found on the server.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-2"><strong>TRUE:</strong> 404 is the standard client error for missing resources.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. A POST request is idempotent.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-3"><strong>FALSE:</strong> Multiple identical POST requests create multiple duplicate resources.</div>
+                    </div>
+                </div>
+
+                <!-- Short Answer -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-comment-dots"></i> Quick Concepts</h3>
+                    <div class="kc-item">
+                        <p>1. What status code indicates successful resource creation?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-1"><strong>Answer:</strong> <code>201 Created</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. Which header specifies the format of data transmitted in a response?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-2"><strong>Answer:</strong> <code>Content-Type</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. What do 5xx status codes represent?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-3"><strong>Answer:</strong> Internal Server Errors.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: REVISION NOTES -->
+        <section class="content-block" id="revision">
+            <h2 class="section-title"><i class="fa-solid fa-rotate-left"></i> Day 05 Quick Revision Cheat-Sheet</h2>
+            <div class="revision-grid">
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h4>HTTP Protocol</h4>
+                    <p>Stateless request-response communication standard between clients and servers.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-code-merge"></i></div>
+                    <h4>Methods</h4>
+                    <p><code>GET</code> (read), <code>POST</code> (create), <code>PUT</code> (replace), <code>DELETE</code> (remove).</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-signal"></i></div>
+                    <h4>Status Codes</h4>
+                    <p>2xx (Success), 3xx (Redirect), 4xx (Client Error), 5xx (Server Error).</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-heading"></i></div>
+                    <h4>Headers</h4>
+                    <p>Metadata key-values like <code>Content-Type</code> and <code>Authorization</code>.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                 <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (Day 05/15)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+</html>

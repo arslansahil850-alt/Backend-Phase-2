@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10: PUT, PATCH & DELETE Requests | Arslan's Premium Platform</title>
+     <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+           <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Lessons</a>
+                <a href="#exercises" class="nav-link"><i class="fa-solid fa-dumbbell"></i> Exercises</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-code-fork"></i> Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Quiz</a>
+                <a href="#revision" class="nav-link"><i class="fa-solid fa-rotate-left"></i> Revision</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 10 | PUT, PATCH & DELETE</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item">
+                                <a href="../Day 1/index.html">
+                                    <span class="day-num">Day 01</span>
+                                    <span class="day-topic">Backend Intro & Node.js</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 2/index.html">
+                                    <span class="day-num">Day 02</span>
+                                    <span class="day-topic">Node.js Modules (CommonJS)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 3/index.html">
+                                    <span class="day-num">Day 03</span>
+                                    <span class="day-topic">npm & Project Structure</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 4/index.html">
+                                    <span class="day-num">Day 04</span>
+                                    <span class="day-topic">Built-in Modules (fs, path, os)</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 5/index.html">
+                                    <span class="day-num">Day 05</span>
+                                    <span class="day-topic">HTTP Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 6/index.html">
+                                    <span class="day-num">Day 06</span>
+                                    <span class="day-topic">Building a Node HTTP Server</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 7/index.html">
+                                    <span class="day-num">Day 07</span>
+                                    <span class="day-topic">Express.js Fundamentals</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 8/index.html">
+                                    <span class="day-num">Day 08</span>
+                                    <span class="day-topic">Route & Query Parameters</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 9/index.html">
+                                    <span class="day-num">Day 09</span>
+                                    <span class="day-topic">POST Requests & Request Body</span>
+                                </a>
+                            </li>
+                            <li class="day-item active">
+                                <a href="../Day 10/index.html">
+                                    <span class="day-num">Day 10</span>
+                                    <span class="day-topic">PUT, PATCH & DELETE Requests</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 11/index.html">
+                                    <span class="day-num">Day 11</span>
+                                    <span class="day-topic">Express Middleware</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 12/index.html">
+                                    <span class="day-num">Day 12</span>
+                                    <span class="day-topic">Express Error Handling</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 13/index.html">
+                                    <span class="day-num">Day 13</span>
+                                    <span class="day-topic">REST API Design</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 14/index.html">
+                                    <span class="day-num">Day 14</span>
+                                    <span class="day-topic">Environment Variables & dotenv</span>
+                                </a>
+                            </li>
+                            <li class="day-item">
+                                <a href="../Day 15/index.html">
+                                    <span class="day-num">Day 15</span>
+                                    <span class="day-topic">Revision & Mini Project</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> PHASE 2 &bull; DAY 10</div>
+                <h1 class="hero-title">PUT, PATCH & <span class="text-gradient">DELETE Requests</span></h1>
+                <p class="hero-description">
+                    Complete your CRUD operations in Express. Learn how to update existing records completely using PUT, modify them partially using PATCH, and remove resources securely using DELETE.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 9/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Previous</a>
+                    <div class="current-indicator">Day 10 / 15</div>
+                    <a href="../Day 11/index.html" class="btn btn-primary">Next Day <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Day 10 Progress</span>
+                        <span id="overallProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D CRUD Operation Pipeline Visualizer (Drag to rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+        
+        <!-- SECTION A & B: INTRODUCTION & PREREQUISITES -->
+        <section class="content-block" id="introduction">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Introduction & Prerequisites</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why CRUD Updates & Deletions?</h3>
+                    <p>
+                        With GET (Read) and POST (Create) mastered, you now need to handle resource lifecycle modifications: <strong>PUT</strong> (full replacement), <strong>PATCH</strong> (partial update), and <strong>DELETE</strong> (removal).
+                    </p>
+                    <p>
+                        Combining these methods fulfills the complete **CRUD** (Create, Read, Update, Delete) architecture required for professional RESTful APIs.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 08 Knowledge:</strong> Capturing route parameters via `req.params`.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Day 09 Knowledge:</strong> Parsing request bodies using `express.json()`.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: LEARNING OBJECTIVES -->
+        <section class="content-block" id="objectives">
+            <h2 class="section-title"><i class="fa-solid fa-bullseye"></i> Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="obj-number">01</div>
+                    <h4>PUT Requests</h4>
+                    <p>Completely replace an existing resource using route parameters and request bodies.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">02</div>
+                    <h4>PATCH Requests</h4>
+                    <p>Perform partial updates on specific resource properties safely.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">03</div>
+                    <h4>DELETE Requests</h4>
+                    <p>Locate and remove resources from data stores with 404 error checks.</p>
+                </div>
+                <div class="obj-card">
+                    <div class="obj-number">04</div>
+                    <h4>Complete CRUD APIs</h4>
+                    <p>Synthesize GET, POST, PUT, PATCH, and DELETE into a unified backend controller.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D & E: DETAILED LESSONS & CODE EXAMPLES -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Detailed Lessons & Code Demonstrations</h2>
+
+            <!-- Lesson 1 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 10.1</span>
+                    <h3>PUT vs. PATCH: Full Replacement vs. Partial Updates</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        <strong>PUT</strong> implies replacing the entire resource entity. If any field is omitted in a PUT payload, it may be wiped out. <strong>PATCH</strong> modifies only the specific fields supplied in the request body.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> update-demo.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">const express = require('express');
+const app = express();
+app.use(express.json());
+
+let users = [
+    { id: 1, name: 'Arslan', email: 'arslan@dev.com', role: 'Admin' }
+];
+
+// PATCH: Partial Update
+app.patch('/api/users/:id', (req, res) => {
+    const userId = parseInt(req.params.id);
+    const user = users.find(u => u.id === userId);
+
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    // Update only supplied fields
+    if (req.body.name) user.name = req.body.name;
+    if (req.body.email) user.email = req.body.email;
+
+    res.json({ success: true, data: user });
+});
+
+app.listen(3000);</code></pre>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Lesson 2 -->
+            <article class="lesson-card">
+                <div class="lesson-header">
+                    <span class="lesson-badge">Lesson 10.2</span>
+                    <h3>DELETE Requests: Removing Resources Safely</h3>
+                </div>
+                <div class="lesson-content">
+                    <p>
+                        The DELETE method removes a resource identified by a route parameter. Always verify if the record exists before filtering or splicing your data array.
+                    </p>
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-file-code"></i> delete-demo.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// DELETE: Remove a user by ID
+app.delete('/api/users/:id', (req, res) => {
+    const userId = parseInt(req.params.id);
+    const index = users.findIndex(u => u.id === userId);
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+
+    const deletedUser = users.splice(index, 1);
+
+    res.json({
+        success: true,
+        message: 'User deleted successfully',
+        data: deletedUser[0]
+    });
+});</code></pre>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION F: PRACTICAL EXERCISES -->
+        <section class="content-block" id="exercises">
+            <h2 class="section-title"><i class="fa-solid fa-dumbbell"></i> Practical Exercises</h2>
+            <div class="exercise-list">
+                
+                <!-- Exercise 1 -->
+                <div class="exercise-card" id="ex-1">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-easy">Easy</span>
+                        <h4>Exercise 1: Basic DELETE Route Definition</h4>
+                    </div>
+                    <p>Write an Express DELETE endpoint for `/api/posts/:id` that extracts the ID parameter.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-1')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-1">
+                        <pre><code class="language-javascript">app.delete('/api/posts/:id', (req, res) => {
+    const postId = req.params.id;
+    res.json({ deletedId: postId });
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 -->
+                <div class="exercise-card" id="ex-2">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 2: PATCH Property Update</h4>
+                    </div>
+                    <p>Write a PATCH endpoint `/api/tasks/:id` that updates a task's `completed` status from `req.body`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-2')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-2">
+                        <pre><code class="language-javascript">app.patch('/api/tasks/:id', (req, res) => {
+    const task = tasks.find(t => t.id == req.params.id);
+    if (!task) return res.status(404).json({ error: 'Not found' });
+    if (req.body.completed !== undefined) task.completed = req.body.completed;
+    res.json({ data: task });
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 3 -->
+                <div class="exercise-card" id="ex-3">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-medium">Medium</span>
+                        <h4>Exercise 3: Handling 404 on Delete</h4>
+                    </div>
+                    <p>Ensure your DELETE route checks if an item exists using `findIndex()`. Return `404` if index is `-1`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-3')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-3">
+                        <pre><code class="language-javascript">const index = items.findIndex(i => i.id == req.params.id);
+if (index === -1) return res.status(404).json({ error: 'Item not found' });
+items.splice(index, 1);
+res.json({ success: true });</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 4 -->
+                <div class="exercise-card" id="ex-4">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 4: Full Replacement with PUT</h4>
+                    </div>
+                    <p>Write a PUT endpoint `/api/products/:id` that completely replaces an existing product object with data from `req.body`.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-4')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-4">
+                        <pre><code class="language-javascript">app.put('/api/products/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = products.findIndex(p => p.id === id);
+    if (index === -1) return res.status(404).json({ error: 'Not found' });
+    products[index] = { id, ...req.body };
+    res.json({ data: products[index] });
+});</code></pre>
+                    </div>
+                </div>
+
+                <!-- Exercise 5 -->
+                <div class="exercise-card" id="ex-5">
+                    <div class="ex-header">
+                        <span class="ex-badge badge-hard">Hard</span>
+                        <h4>Exercise 5: Validating PUT Payloads</h4>
+                    </div>
+                    <p>In your PUT route, verify that both `title` and `price` exist in `req.body` before replacing the record.</p>
+                    <button class="reveal-btn" onclick="toggleSolution('sol-5')"><i class="fa-solid fa-eye"></i> Reveal Solution</button>
+                    <div class="solution-box hidden" id="sol-5">
+                        <pre><code class="language-javascript">if (!req.body.title || !req.body.price) {
+    return res.status(400).json({ error: 'Title and price are required for PUT' });
+}</code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION G: DAILY PRACTICAL PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Daily Project: Complete CRUD Product Inventory API</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-boxes-stacked"></i> Build a Fully Functional CRUD Backend Server</h3>
+                    <span class="phase-tag">Project Phase 2 - Day 10</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Description:</strong> Build an Express.js API that implements all 5 core HTTP methods: GET (list & single), POST (create), PUT (replace), PATCH (update), and DELETE (remove).</p>
+                    
+                    <h4>Key Requirements:</h4>
+                    <ul class="styled-list">
+                        <li>GET `/api/inventory` & GET `/api/inventory/:id`</li>
+                        <li>POST `/api/inventory` with body parsing and validation</li>
+                        <li>PUT `/api/inventory/:id` and PATCH `/api/inventory/:id`</li>
+                        <li>DELETE `/api/inventory/:id` with 404 error handling</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> server.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">// Complete CRUD Product Inventory API
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+let inventory = [
+    { id: 1, name: 'Mechanical Keyboard', price: 89.99, stock: 15 },
+    { id: 2, name: 'Gaming Mouse', price: 49.99, stock: 25 }
+];
+
+// 1. GET: List all inventory items
+app.get('/api/inventory', (req, res) => {
+    res.json({ success: true, count: inventory.length, data: inventory });
+});
+
+// 2. GET: Get single item by ID
+app.get('/api/inventory/:id', (req, res) => {
+    const item = inventory.find(i => i.id === parseInt(req.params.id));
+    if (!item) return res.status(404).json({ error: 'Item not found' });
+    res.json({ success: true, data: item });
+});
+
+// 3. POST: Create a new inventory item
+app.post('/api/inventory', (req, res) => {
+    const { name, price, stock } = req.body;
+    if (!name || !price) {
+        return res.status(400).json({ error: 'Name and price are required' });
+    }
+    const newItem = { id: Date.now(), name, price, stock: stock || 0 };
+    inventory.push(newItem);
+    res.status(201).json({ success: true, message: 'Item created', data: newItem });
+});
+
+// 4. PUT: Fully replace an inventory item
+app.put('/api/inventory/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = inventory.findIndex(i => i.id === id);
+    if (index === -1) return res.status(404).json({ error: 'Item not found' });
+
+    const { name, price, stock } = req.body;
+    if (!name || !price) {
+        return res.status(400).json({ error: 'Name and price required for PUT replacement' });
+    }
+
+    inventory[index] = { id, name, price, stock: stock || 0 };
+    res.json({ success: true, message: 'Item fully replaced', data: inventory[index] });
+});
+
+// 5. PATCH: Partially update an inventory item
+app.patch('/api/inventory/:id', (req, res) => {
+    const item = inventory.find(i => i.id === parseInt(req.params.id));
+    if (!item) return res.status(404).json({ error: 'Item not found' });
+
+    if (req.body.name) item.name = req.body.name;
+    if (req.body.price !== undefined) item.price = req.body.price;
+    if (req.body.stock !== undefined) item.stock = req.body.stock;
+
+    res.json({ success: true, message: 'Item updated partially', data: item });
+});
+
+// 6. DELETE: Remove an inventory item
+app.delete('/api/inventory/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const index = inventory.findIndex(i => i.id === id);
+    if (index === -1) return res.status(404).json({ error: 'Item not found' });
+
+    const deleted = inventory.splice(index, 1);
+    res.json({ success: true, message: 'Item deleted', data: deleted[0] });
+});
+
+app.listen(PORT, () => {
+    console.log(`🚀 CRUD Inventory API active at http://localhost:${PORT}`);
+});</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Project Completion Checklist</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Created `server.js` featuring all CRUD endpoints
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested PUT and PATCH updates successfully
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested DELETE removals and 404 error responses
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: INTERACTIVE MCQ QUIZ -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Interactive Knowledge Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: KNOWLEDGE CHECK (TRUE/FALSE & SHORT ANSWERS) -->
+        <section class="content-block" id="knowledge-check">
+            <h2 class="section-title"><i class="fa-solid fa-clipboard-check"></i> Conceptual Knowledge Checks</h2>
+            
+            <div class="grid-2-col">
+                <!-- True/False -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-toggle-on"></i> True or False</h3>
+                    <div class="kc-item">
+                        <p>1. PUT requests are designed for full resource replacement.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-1"><strong>TRUE:</strong> PUT replaces the entire record.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. PATCH updates only specific supplied fields in a record.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-2"><strong>TRUE:</strong> PATCH performs partial modifications.</div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. DELETE method requests do not require route parameters to identify records.</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('tf-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="tf-3"><strong>FALSE:</strong> DELETE typically requires an ID parameter to target the specific record.</div>
+                    </div>
+                </div>
+
+                <!-- Short Answer -->
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-comment-dots"></i> Quick Concepts</h3>
+                    <div class="kc-item">
+                        <p>1. Which Express method registers a DELETE route?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-1')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-1"><strong>Answer:</strong> <code>app.delete()</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>2. What array method is commonly used to remove an item by index?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-2')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-2"><strong>Answer:</strong> <code>Array.splice()</code></div>
+                    </div>
+                    <div class="kc-item">
+                        <p>3. What status code is returned when a requested record to delete is not found?</p>
+                        <button class="reveal-sm-btn" onclick="toggleKC('sa-3')">Reveal Answer</button>
+                        <div class="kc-answer hidden" id="sa-3"><strong>Answer:</strong> <code>404 Not Found</code></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: REVISION NOTES -->
+        <section class="content-block" id="revision">
+            <h2 class="section-title"><i class="fa-solid fa-rotate-left"></i> Day 10 Quick Revision Cheat-Sheet</h2>
+            <div class="revision-grid">
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <h4>PUT Method</h4>
+                    <p>Performs complete resource replacement using route parameters and request bodies.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h4>PATCH Method</h4>
+                    <p>Performs partial updates, modifying only the fields supplied in the request body.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-trash-can"></i></div>
+                    <h4>DELETE Method</h4>
+                    <p>Removes targeted resources identified by route parameters with 404 validation checks.</p>
+                </div>
+                <div class="rev-card">
+                    <div class="rev-icon"><i class="fa-solid fa-cubes"></i></div>
+                    <h4>Full CRUD</h4>
+                    <p>Combining GET, POST, PUT, PATCH, and DELETE fulfills complete RESTful architecture.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                 <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (Day 10/15)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+</html>

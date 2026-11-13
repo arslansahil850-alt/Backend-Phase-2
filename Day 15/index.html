@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 15: Revision & Phase 2 Capstone | Arslan's Platform</title>
+    <link rel="icon" href="../logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+            <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="../logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#lessons" class="nav-link"><i class="fa-solid fa-book-open"></i> Revision</a>
+                <a href="#project" class="nav-link"><i class="fa-solid fa-rocket"></i> Capstone Project</a>
+                <a href="#quiz" class="nav-link"><i class="fa-solid fa-vial"></i> Final Exam</a>
+                <a href="#visual-gallery" class="nav-link"><i class="fa-solid fa-images"></i> Visual Diagrams</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Day Selector Dropdown -->
+                <div class="day-selector-wrapper">
+                    <button class="day-selector-btn" id="daySelectorBtn" aria-expanded="false">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span>Day 15 | Capstone & Revision</span>
+                        <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </button>
+                    <div class="day-dropdown" id="dayDropdown">
+                        <div class="dropdown-header">
+                            <span>PHASE 2: NODE.JS & EXPRESS</span>
+                            <span class="phase-badge">15 DAYS</span>
+                        </div>
+                        <ul class="day-list">
+                            <li class="day-item"><a href="../Day 1/index.html"><span class="day-num">Day 01</span><span
+                                        class="day-topic">Backend Intro & Node.js</span></a></li>
+                            <li class="day-item"><a href="../Day 2/index.html"><span class="day-num">Day 02</span><span
+                                        class="day-topic">Node.js Modules (CommonJS)</span></a></li>
+                            <li class="day-item"><a href="../Day 3/index.html"><span class="day-num">Day 03</span><span
+                                        class="day-topic">npm & Project Structure</span></a></li>
+                            <li class="day-item"><a href="../Day 4/index.html"><span class="day-num">Day 04</span><span
+                                        class="day-topic">Built-in Modules (fs, path, os)</span></a></li>
+                            <li class="day-item"><a href="../Day 5/index.html"><span class="day-num">Day 05</span><span
+                                        class="day-topic">HTTP Fundamentals</span></a></li>
+                            <li class="day-item"><a href="../Day 6/index.html"><span class="day-num">Day 06</span><span
+                                        class="day-topic">Building a Node HTTP Server</span></a></li>
+                            <li class="day-item"><a href="../Day 7/index.html"><span class="day-num">Day 07</span><span
+                                        class="day-topic">Express.js Fundamentals</span></a></li>
+                            <li class="day-item"><a href="../Day 8/index.html"><span class="day-num">Day 08</span><span
+                                        class="day-topic">Route & Query Parameters</span></a></li>
+                            <li class="day-item"><a href="../Day 9/index.html"><span class="day-num">Day 09</span><span
+                                        class="day-topic">POST Requests & Body Parsing</span></a></li>
+                            <li class="day-item"><a href="../Day 10/index.html"><span class="day-num">Day 10</span><span
+                                        class="day-topic">PUT, PATCH & DELETE Requests</span></a></li>
+                            <li class="day-item"><a href="../Day 11/index.html"><span class="day-num">Day 11</span><span
+                                        class="day-topic">Express Middleware</span></a></li>
+                            <li class="day-item"><a href="../Day 12/index.html"><span class="day-num">Day 12</span><span
+                                        class="day-topic">Express Error Handling</span></a></li>
+                            <li class="day-item"><a href="../Day 13/index.html"><span class="day-num">Day 13</span><span
+                                        class="day-topic">REST API Design Principles</span></a></li>
+                            <li class="day-item"><a href="../Day 14/index.html"><span class="day-num">Day 14</span><span
+                                        class="day-topic">Environment Variables & dotenv</span></a></li>
+                            <li class="day-item active"><a href="../Day 15/index.html"><span class="day-num">Day
+                                        15</span><span class="day-topic">Revision & Mini Project</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & 3D INTERACTIVE SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-trophy"></i> PHASE 2 &bull; FINAL DAY 15</div>
+                <h1 class="hero-title">Phase 2 <span class="text-gradient">Capstone & Revision</span></h1>
+                <p class="hero-description">
+                    Consolidate all 15 days of Node.js & Express knowledge. Build a production-grade REST API server
+                    combining modular architecture, custom middleware, error handlers, dotenv security, CRUD operations,
+                    and pagination.
+                </p>
+
+                <div class="day-navigation-bar">
+                    <a href="../Day 14/index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i>
+                        Previous Day</a>
+                    <div class="current-indicator">Day 15 / 15</div>
+                    <a href="../index.html" class="btn btn-primary"><i class="fa-solid fa-flag-checkered"></i> Finish
+                        Phase 2</a>
+                </div>
+
+                <div class="hero-progress-card">
+                    <div class="progress-info">
+                        <span>Phase 2 Completion</span>
+                        <span id="overallProgressPercent">100%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="overallProgressBar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-3d-wrapper">
+                <div id="threejs-canvas-container"></div>
+                <div class="canvas-caption">
+                    <i class="fa-solid fa-cube"></i> Interactive 3D Phase 2 Backend Ecosystem Core (Drag to rotate)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+
+        <!-- SECTION A: REVISION SUMMARY -->
+        <section class="content-block" id="lessons">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Phase 2 Core Topics Recap</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-server"></i> Server Foundations</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Node Runtime:</strong> Asynchronous
+                            single-threaded event loop architecture.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Modules & npm:</strong> CommonJS
+                            exports, package management with <code>package.json</code>.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>HTTP Protocols:</strong>
+                            Request/response streams, status codes, headers, and methods.</li>
+                    </ul>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Express Architecture</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Routing & Body Parsing:</strong> Route
+                            params, query strings, and JSON body parsing.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Middleware Pipeline:</strong> Dynamic
+                            request interception using <code>next()</code>.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Errors & Security:</strong> Centralized
+                            error handlers and <code>dotenv</code> configuration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION B: COMPREHENSIVE CAPSTONE PROJECT -->
+        <section class="content-block" id="project">
+            <h2 class="section-title"><i class="fa-solid fa-rocket"></i> Master Capstone Project: Complete Task Manager
+                REST API</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-cubes-stacked"></i> Production-Grade Express Server</h3>
+                    <span class="phase-tag">Phase 2 Capstone</span>
+                </div>
+                <div class="project-body">
+                    <p><strong>Overview:</strong> This single executable backend server combines all concepts learned
+                        across Days 1 through 14 into one cohesive production structure.</p>
+
+                    <h4>Included Modules & Technical Highlights:</h4>
+                    <ul class="styled-list">
+                        <li><strong>Environment Configuration:</strong> Loads variables via <code>dotenv</code> with
+                            missing variable validation.</li>
+                        <li><strong>Global Middleware:</strong> Request logger, JSON parser, and request timestamps.
+                        </li>
+                        <li><strong>RESTful Endpoints:</strong> Plural endpoints (<code>/api/v1/tasks</code>) with full
+                            CRUD (GET, POST, PUT, PATCH, DELETE).</li>
+                        <li><strong>Advanced Filtering & Pagination:</strong> Slice-based pagination with
+                            <code>page</code>, <code>limit</code>, and <code>status</code> filters.
+                        </li>
+                        <li><strong>Centralized Error Handling:</strong> Custom <code>AppError</code> class and
+                            4-parameter error middleware.</li>
+                    </ul>
+
+                    <div class="code-example-block">
+                        <div class="code-header">
+                            <span><i class="fa-solid fa-code"></i> capstone-server.js</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i>
+                                Copy</button>
+                        </div>
+                        <pre><code class="language-javascript">/**
+ * PHASE 2 CAPSTONE: COMPLETE PRODUCTION-GRADE EXPRESS REST API
+ * Combines: Node.js, Express, Middleware, Routing, CRUD, REST Principles, 
+ * Error Handling, Pagination, and Dotenv Security.
+ */
+
+require('dotenv').config();
+const express = require('express');
+const app = express();
+
+// 1. ENVIRONMENT CONFIGURATION & VALIDATION
+const PORT = process.env.PORT || 3000;
+const API_KEY = process.env.API_KEY || 'arslan-secret-key';
+
+// 2. CUSTOM ERROR CLASS (Day 12 & 13)
+class AppError extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode;
+        this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+        this.isOperational = true;
+        Error.captureStackTrace(this, this.constructor);
+    }
+}
+
+// 3. GLOBAL MIDDLEWARE PIPELINE (Day 09 & 11)
+app.use(express.json());
+
+// Custom Logger Middleware
+app.use((req, res, next) => {
+    req.requestTime = new Date().toISOString();
+    console.log(`[${req.requestTime}] ${req.method} -> ${req.originalUrl}`);
+    next();
+});
+
+// API Key Security Guard Middleware (Day 14)
+const authenticateKey = (req, res, next) => {
+    const key = req.headers['x-api-key'];
+    if (!key || key !== API_KEY) {
+        return next(new AppError('Unauthorized: Missing or invalid X-API-KEY header', 401));
+    }
+    next();
+};
+
+// 4. IN-MEMORY DATABASE STORE (Day 10)
+let tasks = [
+    { id: 1, title: 'Learn Node.js Basics', status: 'completed', priority: 'high', createdAt: '2026-01-01' },
+    { id: 2, title: 'Master Express Routing', status: 'completed', priority: 'medium', createdAt: '2026-01-05' },
+    { id: 3, title: 'Build REST APIs', status: 'in-progress', priority: 'high', createdAt: '2026-01-10' },
+    { id: 4, title: 'Implement Dotenv & Error Handlers', status: 'pending', priority: 'medium', createdAt: '2026-01-14' },
+    { id: 5, title: 'Deploy Phase 2 Project', status: 'pending', priority: 'low', createdAt: '2026-01-15' }
+];
+
+// 5. RESTFUL ROUTES (Day 08, 10, 13)
+
+// GET /api/v1/tasks (With Pagination & Filtering)
+app.get('/api/v1/tasks', (req, res) => {
+    let results = [...tasks];
+
+    // Filtering by status
+    if (req.query.status) {
+        results = results.filter(t => t.status.toLowerCase() === req.query.status.toLowerCase());
+    }
+
+    // Pagination
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 2;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const paginatedTasks = results.slice(startIndex, endIndex);
+
+    res.status(200).json({
+        success: true,
+        page,
+        limit,
+        totalItems: results.length,
+        totalPages: Math.ceil(results.length / limit),
+        data: paginatedTasks
+    });
+});
+
+// GET /api/v1/tasks/:id
+app.get('/api/v1/tasks/:id', (req, res, next) => {
+    const task = tasks.find(t => t.id === parseInt(req.params.id));
+    if (!task) {
+        return next(new AppError('Task not found with that ID', 404));
+    }
+    res.status(200).json({ success: true, data: task });
+});
+
+// POST /api/v1/tasks (Protected)
+app.post('/api/v1/tasks', authenticateKey, (req, res, next) => {
+    const { title, priority } = req.body;
+    if (!title) {
+        return next(new AppError('Please provide a task title', 400));
+    }
+
+    const newTask = {
+        id: tasks.length + 1,
+        title,
+        status: 'pending',
+        priority: priority || 'medium',
+        createdAt: new Date().toISOString().split('T')[0]
+    };
+
+    tasks.push(newTask);
+    res.status(201).json({ success: true, message: 'Task created successfully', data: newTask });
+});
+
+// PUT /api/v1/tasks/:id (Replace Complete Task)
+app.put('/api/v1/tasks/:id', authenticateKey, (req, res, next) => {
+    const id = parseInt(req.params.id);
+    const index = tasks.findIndex(t => t.id === id);
+    if (index === -1) {
+        return next(new AppError('Task not found for replacement', 404));
+    }
+
+    const { title, status, priority } = req.body;
+    if (!title || !status) {
+        return next(new AppError('Title and status are required for full PUT replacement', 400));
+    }
+
+    tasks[index] = { id, title, status, priority: priority || 'medium', createdAt: tasks[index].createdAt };
+    res.status(200).json({ success: true, message: 'Task replaced successfully', data: tasks[index] });
+});
+
+// PATCH /api/v1/tasks/:id (Partial Update)
+app.patch('/api/v1/tasks/:id', authenticateKey, (req, res, next) => {
+    const id = parseInt(req.params.id);
+    const task = tasks.find(t => t.id === id);
+    if (!task) {
+        return next(new AppError('Task not found for partial update', 404));
+    }
+
+    if (req.body.title) task.title = req.body.title;
+    if (req.body.status) task.status = req.body.status;
+    if (req.body.priority) task.priority = req.body.priority;
+
+    res.status(200).json({ success: true, message: 'Task updated successfully', data: task });
+});
+
+// DELETE /api/v1/tasks/:id
+app.delete('/api/v1/tasks/:id', authenticateKey, (req, res, next) => {
+    const index = tasks.findIndex(t => t.id === parseInt(req.params.id));
+    if (index === -1) {
+        return next(new AppError('Task not found for deletion', 404));
+    }
+
+    tasks.splice(index, 1);
+    res.status(200).json({ success: true, message: 'Task deleted successfully' });
+});
+
+// 6. UNHANDLED ROUTE CATCH-ALL (404)
+app.all('*', (req, res, next) => {
+    next(new AppError(`Cannot find ${req.originalUrl} on this server!`, 404));
+});
+
+// 7. CENTRALIZED ERROR HANDLING MIDDLEWARE (Day 12)
+app.use((err, req, res, next) => {
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || 'error';
+
+    res.status(err.statusCode).json({
+        success: false,
+        status: err.status,
+        message: err.message,
+        stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
+});
+
+// 8. START SERVER
+app.listen(PORT, () => {
+    console.log(`🚀 Capstone REST API server running at http://localhost:${PORT}`);
+});</code></pre>
+                    </div>
+
+                    <div class="project-checklist">
+                        <h4><i class="fa-solid fa-square-check"></i> Phase 2 Capstone Verification</h4>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-1" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Verified RESTful route architecture and status codes (200, 201, 401, 404)
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-2" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Tested pagination, query filters, and custom authentication header middleware
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="proj-check-3" onchange="updateProgress()">
+                            <span class="checkmark"></span>
+                            Confirmed centralized error middleware captures missing routes and bad inputs
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: FINAL KNOWLEDGE ASSESSMENT (15 MCQs) -->
+        <section class="content-block" id="quiz">
+            <h2 class="section-title"><i class="fa-solid fa-vial"></i> Phase 2 Final Certification Assessment</h2>
+            <div class="quiz-container-box">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="quiz-question-number">Question 1 of 15</span>
+                        <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="quizProgressFill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- MCQ Rendered Dynamically via script.js -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button class="btn btn-secondary" id="quizPrevBtn" onclick="prevQuestion()" disabled><i
+                            class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button class="btn btn-primary" id="quizNextBtn" onclick="nextQuestion()">Next <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D: ALL DAYS VISUAL LEARNING & DIAGRAM DOWNLOAD GALLERY -->
+        <section class="content-block" id="visual-gallery">
+            <h2 class="section-title"><i class="fa-solid fa-images"></i> Phase 2 Complete Visual Learning & Diagram
+                Gallery</h2>
+            <p class="text-secondary mb-4">
+                Access and download all architectural diagrams across all 15 days of Phase 2. Replace the
+                <code>src</code> and <code>href</code> paths with your uploaded diagram files.
+            </p>
+
+            <div class="gallery-grid">
+
+                <!-- Day 01 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 01</span>
+                        <h4>Node.js Architecture</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/1.webp" alt="Day 01 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+01+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/1.webp" download="Day-01-Node-Architecture.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 02 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 02</span>
+                        <h4>CommonJS Modules</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/2.webp" alt="Day 02 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+02+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/2.webp" download="Day-02-CommonJS-Modules.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 03 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 03</span>
+                        <h4>npm & Package Tree</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/3.webp" alt="Day 03 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+03+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/3.webp" download="Day-03-npm-Package-Tree.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 04 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 04</span>
+                        <h4>FileSystem (fs) Stream</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/4.webp" alt="Day 04 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+04+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/4.webp" download="Day-04-FileSystem-Stream.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 05 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 05</span>
+                        <h4>HTTP Request / Response</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/5.webp" alt="Day 05 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+05+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/5.webp" download="Day-05-HTTP-Lifecycle.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 06 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 06</span>
+                        <h4>Raw HTTP Server Pipeline</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/6.webp" alt="Day 06 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+06+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/6.webp"download="Day-06-Raw-HTTP-Server.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 07 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 07</span>
+                        <h4>Express Application Core</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/7.webp" alt="Day 07 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+07+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/7.webp" download="Day-07-Express-Core.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 08 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 08</span>
+                        <h4>Params vs Query Strings</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/8.webp" alt="Day 08 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+08+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/8.webp" download="Day-08-Params-Query.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 09 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 09</span>
+                        <h4>JSON Body Parser Lifecycle</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/9.webp" alt="Day 09 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+09+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/9.webp"" download="Day-09-Body-Parsing.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 10 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 10</span>
+                        <h4>PUT, PATCH & DELETE CRUD</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/10.webp"alt="Day 10 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+10+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/10.webp" download="Day-10-CRUD-Operations.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 11 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 11</span>
+                        <h4>Middleware Flow (req, res, next)</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/11.webp" alt="Day 11 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+11+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/11.webp" download="Day-11-Middleware-Flow.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 12 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 12</span>
+                        <h4>Central Error Pipeline</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/12.webp" alt="Day 12 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+12+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/12.webp" download="Day-12-Error-Handling.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 13 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 13</span>
+                        <h4>RESTful URI & Pagination</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/13.webp" alt="Day 13 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+13+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/13.webp" download="Day-13-REST-Architecture.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 14 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 14</span>
+                        <h4>Dotenv & Security Vault</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/15.webp"" alt="Day 14 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+14+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/14.webp"download="Day-14-Dotenv-Security.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Day 15 -->
+                <div class="gallery-card glass-card">
+                    <div class="gallery-card-header">
+                        <span class="day-num-badge">Day 15</span>
+                        <h4>Capstone Full Architecture</h4>
+                    </div>
+                    <div class="gallery-img-container">
+                        <img src="../assets/15.webp" alt="Day 15 Diagram" class="gallery-thumb"
+                            onerror="this.src='https://via.placeholder.com/400x220/111622/38bdf8?text=Day+15+Diagram+Pending';">
+                    </div>
+                    <div class="gallery-actions">
+                        <a href="../assets/15.webp" download="Day-15-Capstone-Architecture.png"
+                            class="btn-download">
+                            <i class="fa-solid fa-download"></i> Download Diagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-pic">
+                    <img src="../logo.webp" class="brand-logo-pics" alt="logo image">
+                    <a href="https://arslan-weblab.netlify.app/" target="_blank" class="brand-logo"><span
+                            class="logo-accent"> ARSLAN</span> Weblab
+                    </a>
+                </div>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i
+                                class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-trophy"></i> Phase 02 Completed (15/15 Days)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Prism Syntax Highlighting JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Custom Application JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

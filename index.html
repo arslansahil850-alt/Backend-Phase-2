@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2: Node.js & Express | Arslan's Backend Learning Platform</title>
+     <link rel="icon" href="logo.webp">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STICKY NAVBAR -->
+    <header class="navbar-header" id="navbar">
+        <div class="nav-container">
+           <a href="https://arslan-weblab.netlify.app/" class="brand-logo" target="_blank">
+                <img src="logo.webp" class="brand-logo-pics" alt="logo pic">
+                <span class="logo-accent">ARSLAN</span> Weblab
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#overview" class="nav-link"><i class="fa-solid fa-compass"></i> Overview</a>
+                <a href="#days" class="nav-link"><i class="fa-solid fa-book-open"></i> Learning Days</a>
+                <a href="#projects" class="nav-link"><i class="fa-solid fa-code-fork"></i> Projects</a>
+                <a href="#progress" class="nav-link"><i class="fa-solid fa-chart-line"></i> Progress</a>
+                <a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-solid fa-globe"></i> Portfolio</a>
+                <a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer" class="nav-link"><i class="fa-brands fa-github"></i> GitHub</a>
+            </nav>
+
+            <div class="nav-controls">
+                <!-- Theme Toggle Button -->
+                <div class="theme-selector">
+                    <button class="theme-btn" id="themeBtn" title="Change Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <div class="theme-dropdown" id="themeDropdown">
+                        <button data-theme-val="dark"><i class="fa-solid fa-moon"></i> Dark</button>
+                        <button data-theme-val="light"><i class="fa-solid fa-sun"></i> Light</button>
+                        <button data-theme-val="system"><i class="fa-solid fa-desktop"></i> System</button>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <div class="badge-tag"><i class="fa-solid fa-layer-group"></i> ROADMAP &bull; PHASE 2 OF 5</div>
+                <h1 class="hero-title">Master Node.js & <span class="text-gradient">Express.js</span></h1>
+                <p class="hero-description">
+                    Build your backend development foundation through structured lessons, realistic 3D interactive learning platforms, and production-grade practical projects.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-item">
+                        <i class="fa-solid fa-calendar-days text-gold"></i>
+                        <span>15 Comprehensive Days</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fa-solid fa-signal text-blue"></i>
+                        <span>Intermediate Backend</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fa-solid fa-microchip text-cyan"></i>
+                        <span>Node.js, Express, REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#days" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Start Phase 2</a>
+                    <a href="#overview" class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Phase Overview</a>
+                </div>
+            </div>
+
+            <div class="hero-visual-card">
+                <div class="code-preview-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="window-title">phase-2-server.js</span>
+                    </div>
+                    <pre><code class="language-javascript">const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+app.get('/api/v1/status', (req, res) => {
+    res.json({ 
+        phase: 'Phase 2: Node.js & Express',
+        status: 'Operational 🚀',
+        author: 'Arslan' 
+    });
+});
+
+app.listen(3000, () => console.log('Active!'));</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-content">
+        
+        <!-- PHASE OVERVIEW SECTION -->
+        <section class="content-block" id="overview">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Phase Overview & Architecture</h2>
+            <div class="grid-2-col">
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> What & Why Phase 2?</h3>
+                    <p>
+                        Phase 2 transitions you from foundational web development into professional server-side backend engineering. You will master Node.js core modules, HTTP server fundamentals, Express.js middleware architecture, robust error handling, professional REST API design, and environment security.
+                    </p>
+                    <p>
+                        Every day in this phase is structured with rigorous interactive explanations, practical code demonstrations, self-assessment exercises, and production-ready daily projects.
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <h3><i class="fa-solid fa-list-check"></i> Skills & Prerequisites</h3>
+                    <ul class="styled-list">
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Prerequisites:</strong> Basic JavaScript proficiency (ES6+ async/await, closures, callbacks).</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Technologies:</strong> Node.js runtime, Express.js framework, npm ecosystem, Postman.</li>
+                        <li><i class="fa-solid fa-check text-gold"></i> <strong>Expected Outcomes:</strong> Ability to build scalable, secure, and error-resilient REST APIs from scratch.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAY SEARCH & FILTERING BAR -->
+        <section class="content-block" id="days">
+            <div class="section-header-flex">
+                <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Complete Daily Learning Roadmap (15 Days)</h2>
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="daySearchInput" placeholder="Search by day or topic..." onkeyup="filterDays()">
+                </div>
+            </div>
+
+            <!-- DAILY NAVIGATION GRID -->
+            <div class="days-grid" id="daysGrid">
+                
+                <!-- Day 01 -->
+                <div class="day-card" data-search="day 01 backend intro node js">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 01</span>
+                        <span class="badge-easy">Easy</span>
+                    </div>
+                    <h3>Backend Intro & Node.js</h3>
+                    <p>Understand the backend ecosystem, client-server architecture, and Node.js runtime setup.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Node REPL</span>
+                        <a href="./Day 1/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 02 -->
+                <div class="day-card" data-search="day 02 node js modules commonjs">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 02</span>
+                        <span class="badge-easy">Easy</span>
+                    </div>
+                    <h3>Node.js Modules (CommonJS)</h3>
+                    <p>Master modular architecture using `require`, `module.exports`, and core module imports.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Modular CLI</span>
+                        <a href="./Day 2/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 03 -->
+                <div class="day-card" data-search="day 03 npm project structure">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 03</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>npm & Project Structure</h3>
+                    <p>Initialize Node projects, manage dependencies, use `package.json`, and set up nodemon.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> npm Tool</span>
+                        <a href="./Day 3/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 04 -->
+                <div class="day-card" data-search="day 04 built in modules fs path os">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 04</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>Built-in Modules (fs, path, os)</h3>
+                    <p>Interact with the filesystem synchronously and asynchronously using core Node modules.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> File Utility</span>
+                        <a href="./Day 4/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 05 -->
+                <div class="day-card" data-search="day 05 http fundamentals">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 05</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>HTTP Fundamentals</h3>
+                    <p>Explore request/response lifecycles, headers, methods, and status codes in detail.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> HTTP Inspector</span>
+                        <a href="./Day 5/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 06 -->
+                <div class="day-card" data-search="day 06 building a node http server">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 06</span>
+                        <span class="badge-hard">Hard</span>
+                    </div>
+                    <h3>Building a Node HTTP Server</h3>
+                    <p>Create raw Node.js HTTP servers without frameworks and handle dynamic routing.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Raw Server</span>
+                        <a href="./Day 6/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 07 -->
+                <div class="day-card" data-search="day 07 express js fundamentals">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 07</span>
+                        <span class="badge-easy">Easy</span>
+                    </div>
+                    <h3>Express.js Fundamentals</h3>
+                    <p>Initialize Express applications, start servers, and handle basic routing cleanly.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Express App</span>
+                        <a href="./Day 7/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 08 -->
+                <div class="day-card" data-search="day 08 route query parameters">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 08</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>Route & Query Parameters</h3>
+                    <p>Extract dynamic parameters (`req.params`) and query strings (`req.query`) in Express.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Query API</span>
+                        <a href="./Day 8/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 09 -->
+                <div class="day-card" data-search="day 09 post requests request body">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 09</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>POST Requests & Request Body</h3>
+                    <p>Parse incoming JSON and URL-encoded bodies using built-in Express middleware.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Body Parser</span>
+                        <a href="./Day 9/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 10 -->
+                <div class="day-card" data-search="day 10 put patch delete requests">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 10</span>
+                        <span class="badge-hard">Hard</span>
+                    </div>
+                    <h3>PUT, PATCH & DELETE Requests</h3>
+                    <p>Implement complete CRUD operations updating and deleting records in memory.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> CRUD API</span>
+                        <a href="./Day 10/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 11 -->
+                <div class="day-card" data-search="day 11 express middleware">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 11</span>
+                        <span class="badge-hard">Hard</span>
+                    </div>
+                    <h3>Express Middleware</h3>
+                    <p>Understand request-response cycle interception, custom middleware, and third-party tools.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Logger MW</span>
+                        <a href="./Day 11/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 12 -->
+                <div class="day-card" data-search="day 12 express error handling">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 12</span>
+                        <span class="badge-hard">Hard</span>
+                    </div>
+                    <h3>Express Error Handling</h3>
+                    <p>Master 4-parameter error middleware, async error forwarding, and custom AppError classes.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Error API</span>
+                        <a href="./Day 12/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 13 -->
+                <div class="day-card" data-search="day 13 rest api design principles">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 13</span>
+                        <span class="badge-medium">Medium</span>
+                    </div>
+                    <h3>REST API Design Principles</h3>
+                    <p>Learn professional resource naming, semantic status codes, pagination, and API versioning.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> REST API</span>
+                        <a href="./Day 13/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 14 -->
+                <div class="day-card" data-search="day 14 environment variables dotenv">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 14</span>
+                        <span class="badge-easy">Easy</span>
+                    </div>
+                    <h3>Environment Variables & dotenv</h3>
+                    <p>Secure configurations and sensitive credentials using `process.env` and `.env` files.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Secure App</span>
+                        <a href="./Day 14/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Day 15 -->
+                <div class="day-card" data-search="day 15 revision mini project">
+                    <div class="day-card-header">
+                        <span class="day-num-badge">Day 15</span>
+                        <span class="badge-hard">Hard</span>
+                    </div>
+                    <h3>Revision & Mini Project</h3>
+                    <p>Consolidate Phase 2 knowledge by building a comprehensive full Express backend mini-project.</p>
+                    <div class="day-card-footer">
+                        <span class="project-tag"><i class="fa-solid fa-code"></i> Final Project</span>
+                        <a href="./Day 15/index.html" class="btn-card">Open Lesson <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DAILY PROJECTS SHOWCASE SECTION -->
+        <section class="content-block" id="projects">
+            <h2 class="section-title"><i class="fa-solid fa-code-fork"></i> Featured Phase Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-showcase-card">
+                    <div class="proj-badge">Day 06 Project</div>
+                    <h4>Raw Node.js HTTP Server</h4>
+                    <p>A multi-endpoint HTTP server built completely from scratch without external dependencies, handling routing and custom headers.</p>
+                    <a href="./Day 6/index.html" class="btn-secondary-sm">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-showcase-card">
+                    <div class="proj-badge">Day 10 Project</div>
+                    <h4>Express RESTful CRUD API</h4>
+                    <p>A fully functional resource manager supporting GET, POST, PUT, PATCH, and DELETE with robust in-memory state management.</p>
+                    <a href="./Day 10/index.html" class="btn-secondary-sm">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="project-showcase-card">
+                    <div class="proj-badge">Day 15 Project</div>
+                    <h4>Production-Ready Backend Service</h4>
+                    <p>A robust Express API featuring custom AppError classes, validation middleware, rate-limiting, pagination, and dotenv security.</p>
+                    <a href="./Day 15/index.html" class="btn-secondary-sm">View Project <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROGRESS TRACKING EXPLANATION SECTION -->
+        <section class="content-block" id="progress">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Learning Progress Dashboard</h2>
+            <div class="glass-card text-center-box">
+                <h3><i class="fa-solid fa-shield-halved text-gold"></i> Decentralized Progress Architecture</h3>
+                <p class="mb-3">
+                    To ensure robust persistence and independence, progress and quiz completion scores are tracked individually inside each daily website's local storage (`localStorage`).
+                </p>
+                <div class="progress-stats-row">
+                    <div class="p-stat">
+                        <span class="p-num">15</span>
+                        <span class="p-label">Total Days</span>
+                    </div>
+                    <div class="p-stat">
+                        <span class="p-num">3</span>
+                        <span class="p-label">Major Projects</span>
+                    </div>
+                    <div class="p-stat">
+                        <span class="p-num">15</span>
+                        <span class="p-label">Interactive Quizzes</span>
+                    </div>
+                </div>
+                <p class="text-secondary mt-3 text-sm">
+                    Click on any day above to open its dedicated learning portal, complete exercises, and track your daily progress!
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo"><span class="logo-accent">ARSLAN</span>.DEV</a>
+                <p>Mastering modern backend development with hands-on, realistic 3D interactive learning platforms.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Portfolio & Repositories</h4>
+                <ul>
+                    <li><a href="https://arslan-weblab.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web Dev Portfolio</a></li>
+                    <li><a href="https://myprojects-hub.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-cubes"></i> Projects Hub</a></li>
+                    <li><a href="https://github.com/arslansahil850-alt/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-phase">
+                <h4>Current Roadmap Phase</h4>
+                <div class="phase-indicator-badge">
+                    <i class="fa-solid fa-server"></i> Phase 02: Node.js & Express (15 Days)
+                </div>
+                <p class="copyright">&copy; 2026 Arslan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
